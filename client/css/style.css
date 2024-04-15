@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    color: #C6D4DF;
+    background-color: rgb(26, 42, 59);
+    font-family: 'Motiva Sans', Sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #171D25;
+    height: 110px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-link {
+    font-size: 16px;
+    padding: 45px 18px 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #DCDEDF;
+    max-height: max-content;
+}
+
+.nav-link *:not(.active):hover {
+    filter: brightness(175%);
+}
+
+.active {
+    color: rgb(26, 159, 255);
+    border-bottom: 3px solid #1a9fff;
+    filter: none;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0 7px 0;
+}
+
+.search-games {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 40px;
+    min-width: 700px;
+}
+
+.input-search {
+    height: 14px;
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #223a4c;
+    color: white;
+    margin: 0 10px 0 5px;
+}
+
+.input-search:focus {
+    outline: none;
+}
+
+.btn-search {
+    cursor: pointer;
+    color: #67C1F5;
+    background-color: #223a4c;
+    border: 0;
+    height: 26px;
+    width: 100px;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.btn-search:hover {
+    filter: brightness(125%);
+    color: white;
+}
+
+.catalog-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.catalog-item {
+    margin-bottom: 10px;
+    display: flex;
+    min-width: 700px;
+    background-color: rgba(0, 0, 0, 0.2);
+    max-width: 50px;
+    text-decoration: none;
+    color: #C7D5E0;
+}
+
+.catalog-item:last-child {
+    margin-bottom: 0;
+}
+
+.catalog-item:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.game-name-span {
+    margin: 5px 0 0 7px;
+    font-size: 14px;
+}
+
+
+
+.dropdown {
+    margin-bottom: 5px;
+}
+
+.dropbtn {
+    background-color: #323E4C;
+    color: #bdd5e0;
+    padding: 4px 4px 4px 6px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Скрыть содержимое выпадающего списка по умолчанию */
+.dropdown-content {
+    border: 1px solid #323E4C;
+    z-index: 1;
+}
+
+/* Содержимое выпадающего списка (может быть наведено) */
+.dropdown-content button {
+    width: 97%;
+    background-color: rgb(26, 42, 59);
+    border: 0;
+    color: #9fbbcb;
+    padding: 12px 16px;
+    margin: 3px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Изменение фона при наведении курсора */
+.dropdown-content button:hover {
+    background-color: #323E4C;
+}
+
+/* Показать кнопку с направляющей стрелкой при наведении */
+.dropbtn:after {
+    content: '';
+    float: right;
+    margin-left: 5px;
+}
+
+.game-card {
+    background-color: #165f99;
+    width: 21%;
+    margin: 2% 2% 2% 2%;
+    float: left;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.library-card {
+    background-color: #223e59;
+    border-radius: 10px;
+    overflow: auto;
+}
