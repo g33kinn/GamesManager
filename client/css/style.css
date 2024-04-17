@@ -7,15 +7,49 @@ body {
 
 header {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     background-color: #171D25;
     height: 110px;
 }
 
-.content {
+.d-flex {
     display: flex;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-none {
+    display: none;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
     justify-content: center;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-self-flex-end {
+    align-self: flex-end;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.text-align-center {
+    text-align: center;
 }
 
 .nav-link {
@@ -23,7 +57,7 @@ header {
     padding: 45px 18px 18px;
     text-decoration: none;
     text-transform: uppercase;
-    color: #DCDEDF;
+    color: #C6D4DF;
     max-height: max-content;
 }
 
@@ -38,15 +72,10 @@ header {
 }
 
 .search-container {
-    display: flex;
-    justify-content: center;
-    margin: 100px 0 7px 0;
+    margin-bottom: 7px;
 }
 
 .search-games {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.4);
     height: 40px;
     min-width: 700px;
@@ -83,22 +112,23 @@ header {
     color: white;
 }
 
-.catalog-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+.catalog-column {
+    margin: 100px 10px 0 0;
+}
+
+.catalog-filter {
+    margin-top: 100px;
+    width: 200px;
+    flex-grow: 0;
 }
 
 .catalog-item {
     margin-bottom: 10px;
-    display: flex;
     min-width: 700px;
     background-color: rgba(0, 0, 0, 0.2);
     max-width: 50px;
     text-decoration: none;
-    color: #C7D5E0;
+    color: #C6D4DF;
 }
 
 .catalog-item:last-child {
@@ -114,45 +144,37 @@ header {
     font-size: 14px;
 }
 
-
-
 .dropdown {
     margin-bottom: 5px;
 }
 
 .dropbtn {
     background-color: #323E4C;
-    color: #bdd5e0;
     padding: 4px 4px 4px 6px;
     font-size: 14px;
     border: none;
     cursor: pointer;
 }
 
-/* Скрыть содержимое выпадающего списка по умолчанию */
 .dropdown-content {
     border: 1px solid #323E4C;
     z-index: 1;
 }
 
-/* Содержимое выпадающего списка (может быть наведено) */
 .dropdown-content button {
     width: 97%;
     background-color: rgb(26, 42, 59);
     border: 0;
-    color: #9fbbcb;
+    color: #C6D4DF;
     padding: 12px 16px;
     margin: 3px;
     text-decoration: none;
-    display: block;
 }
 
-/* Изменение фона при наведении курсора */
 .dropdown-content button:hover {
     background-color: #323E4C;
 }
 
-/* Показать кнопку с направляющей стрелкой при наведении */
 .dropbtn:after {
     content: '';
     float: right;
@@ -168,8 +190,247 @@ header {
     border-radius: 10px;
 }
 
+.library-container {
+    width: 1500px;
+    margin: 75px 200px;
+}
+
 .library-card {
     background-color: #223e59;
     border-radius: 10px;
     overflow: auto;
+}
+
+.game-page-name {
+    font-size: 26px;
+    padding: 100px 0 10px 0;
+}
+
+.game-card-name {
+    margin: 15px 0 15px 0;
+    font-size: 20px;
+}
+
+.game-card-img {
+    width: 180px;
+    height: 180px;
+    margin: 0px 68px 0px 68px;
+    border-radius: 10px;
+}
+
+.game-card-actions {
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.game-card-a {
+    color: #C6D4DF;
+    font-size: 14px;
+}
+
+.game-card-btn {
+    color: #C6D4DF;
+    border: none;
+    padding: 0;
+    outline: none;
+    background: none;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.button-filter {
+    align-items: center;
+    gap: 5px;
+}
+
+.game-page {
+    margin-bottom: 40px;
+}
+
+.game-img-btn {
+    margin-right: 10px;
+}
+
+.game-img {
+    width: 600px;
+    margin-bottom: 20px;
+}
+
+.game-full-description {
+    width: 350px;
+}
+
+.game-description-div {
+    margin-bottom: 20px;
+}
+
+.game-description {
+    font-size: 16px;
+    text-align: justify;
+}
+
+.game-description-label {
+    padding-bottom: 7px;
+}
+
+.game-requirements-div {
+    padding-bottom: 3px;
+}
+
+.game-requirements-div:last-child {
+    padding-bottom: 0px;
+}
+
+.game-requirements {
+    padding-right: 5px;
+    color: #61686D;
+}
+
+.game-description-property {
+    padding-right: 5px;
+}
+
+.text-align-justify {
+    text-align: justify;
+}
+
+.lib-add-game-btn {
+    background-color: #235cc0;
+    border: none;
+    border-radius: 5px;
+    color: #C6D4DF;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 7px 13px;
+}
+
+.lib-add-game-btn:hover {
+    filter: brightness(125%);
+}
+
+.custom-width {
+    width: 960px;
+}
+
+.custom-hr{
+    border: 1px solid black;
+}
+
+.reviews-container {
+    margin-top: 40px;
+}
+
+.reviews-label {
+    text-transform: uppercase;
+}
+
+.review-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 20px 0 20px 0;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.review-date {
+    color: #61686D;
+    text-transform: uppercase;
+    padding: 7px 0 15px 10px;
+}
+
+.review-date-label {
+    padding-right: 5px;
+}
+
+.reviewer-nickname {
+    margin: 0 0 10px 10px;
+}
+
+.review {
+    margin-left: 10px;
+}
+
+.leave-review-btn {
+    background-color: #baddf1;
+    border: none;
+    border-radius: 5px;
+    color: #223a4c;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 7px 13px;
+}
+
+.leave-review-btn:hover {
+    background-color: #1a9fff;
+    color: white;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.review-dialog {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.login-register-card {
+    background-color: #181a21;
+    border-radius: 10px;
+    margin-top: 150px;
+    width: 600px;
+}
+
+.login-register-input {
+    background-color: #393c44;
+    border: none;
+    color: white;
+    font-size: 18px;
+    width: 530px;
+    height: 35px;
+    border-radius: 1px;
+    margin-top: 7px;
+    padding-left: 8px;
+}
+
+.login-register-input:focus {
+    outline: none;
+}
+
+.login-register-form {
+    padding: 30px;
+}
+
+.login-register-btn {
+    width: 200px;
+    margin: 10px 0;
+    background-color: #235cc0;
+    border: none;
+    border-radius: 5px;
+    color: #C6D4DF;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 7px 13px;
+}
+
+.login-register-btn:hover {
+    filter: brightness(125%);
+}
+
+.personal-info {
+    padding-left: 30px;
+}
+
+.personal-info-change-btn {
+    margin-bottom: 30px;
+}
+
+.login-register-links {
+    position: absolute;
+    right: 0px
+}
+
+.login-register-link {
+    text-decoration: none;
+    color: #C6D4DF;
 }
