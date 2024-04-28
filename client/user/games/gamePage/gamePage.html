@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game1</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+    <header>
+        <a class="nav-link" href="catalog.html"><span class="active">Каталог</span></a>
+        <a class="nav-link" href="library.html"><span>Библиотека</span></a>
+        <a class="nav-link" href="profile.html"><span>Профиль</span></a>
+        <div class="login-register-links">
+            <a class="login-register-link" href="login.html">Войти</a>
+            <a class="login-register-link" href="register.html">Регистрация</a>
+        </div>
+    </header>
+    <main>
+        <div class="d-flex align-items-center flex-direction-column">
+            <div class="custom-width game-page-name">Game1</div>
+            <div class="d-flex justify-content-center game-page">
+                <div class="d-flex align-items-center flex-direction-column justify-content-space-between game-img-btn">
+                    <div><img class="game-img"
+                            src="https://pic.rutubelist.ru/video/da/75/da7500092db6d6df7cb85c180f72bf20.jpg" alt="">
+                    </div>
+                    <div class="align-self-flex-end"><button class='lib-add-game-btn'>Добавить в библиотеку</button>
+                    </div>
+                </div>
+                <div class="game-full-description">
+                    <div class="game-description-div">
+                        <div class="game-description-label">Описание игры:</div>
+                        <div class="game-description">
+                            Game1 – самая масштабная бесплатная кроссплатформенная многопользовательская онлайн-игра,
+                            посвященная боевой технике самых разных войн и конфликтов – с начала XX века и до наших
+                            дней.
+                            Авиация, наземные силы и флот сражаются вместе в одном бою.
+                        </div>
+                    </div>
+                    <div class="d-flex game-description-div">
+                        <div class="game-description-property">Жанр:</div>
+                        <div>Авиасимулятор, танковый симулятор</div>
+                    </div>
+                    <div class="d-flex game-description-div">
+                        <div class="game-description-property">Сеттинг:</div>
+                        <div>Военный</div>
+                    </div>
+                    <div class="d-flex game-description-div">
+                        <div class="game-description-property">Дата выхода:</div>
+                        <div>15 августа 2013 года</div>
+                    </div>
+                    <div>
+                        <div class="game-description-label">Минимальные системные требования:</div>
+                        <div class="d-flex game-requirements-div">
+                            <div class="d-flex game-requirements">ОС:</div>
+                            <div>Windows 10 &#40;64 bit&#41;</div>
+                        </div>
+                        <div class="d-flex game-requirements-div">
+                            <div class="d-flex game-requirements">Процессор:</div>
+                            <div>Dual-Core 2.2 GHz</div>
+                        </div>
+                        <div class="d-flex game-requirements-div">
+                            <div class="d-flex game-requirements">Оперативная память:</div>
+                            <div>4 GB ОЗУ</div>
+                        </div>
+                        <div class="d-flex game-requirements-div">
+                            <div class="d-flex game-requirements">Видеокарта:</div>
+                            <div>NVIDIA GeForce GTX 660</div>
+                        </div>
+                        <div class="d-flex game-requirements-div">
+                            <div class="d-flex game-requirements">Место на диске:</div>
+                            <div>17 GB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-width">
+                <hr class="custom-hr">
+            </div>
+            <div class="custom-width reviews-container">
+                <div class="d-flex justify-content-space-between align-items-center">
+                    <div class="reviews-label">Отзывы пользователей</div>
+                    <div><button class="leave-review-btn" onclick="openDialog()">Оставить отзыв</button></div>
+                    <dialog id="myDialog" class="review-dialog">Оставить свой отзыв</dialog>
+                      
+                </div>
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="d-flex review-date">
+                            <div class="review-date-label">Опубликовано:</div>
+                            <div>14.04.2024</div>
+                        </div>
+                        <div class="reviewer-nickname">Nickname1:</div>
+                    </div>
+                    <div class="review">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        Corporis vitae atque magni facilis quasi labore mollitia pariatur, nisi soluta non.
+                        Eligendi alias doloremque blanditiis molestiae architecto voluptatibus laudantium eos!
+                        Corporis quam rerum veritatis ut odio, omnis maiores?
+                        Rerum rem voluptatum cupiditate exercitationem illo alias officia ipsa error, odit veritatis
+                        asperiores adipisci a aut sunt doloremque neque voluptates? Quisquam officiis dolorem eos
+                        sapiente illum odit ullam modi, ex incidunt ducimus illo architecto iusto inventore. Magni
+                        amet quibusdam, similique blanditiis odit quaerat eligendi voluptatibus, saepe, facilis
+                        minus consequuntur? Nobis cupiditate, voluptatibus earum ut distinctio nam labore, consequuntur,
+                        officiis tempore minus vel. Repellendus!
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="d-flex review-date">
+                            <div class="review-date-label">Опубликовано:</div>
+                            <div>13.04.2024</div>
+                        </div>
+                        <div class="reviewer-nickname">Nickname2:</div>
+                    </div>
+                    <div class="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Id officia eos similique. Commodi, consequatur repellendus.
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="d-flex review-date">
+                            <div class="review-date-label">Опубликовано:</div>
+                            <div>12.04.2024</div>
+                        </div>
+                        <div class="reviewer-nickname">Nickname3:</div>
+                    </div>
+                    <div class="review">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Ipsam maiores quod asperiores numquam illum repellat impedit atque voluptatem rem.
+                        Mollitia sint laudantium obcaecati et temporibus?
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="d-flex review-date">
+                            <div class="review-date-label">Опубликовано:</div>
+                            <div>11.04.2024</div>
+                        </div>
+                        <div class="reviewer-nickname">Nickname4:</div>
+                    </div>
+                    <div class="review">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Deserunt fuga magnam rerum harum quas suscipit cumque iste quam.
+                        Iusto vel reiciendis, ad maiores repudiandae ut eum adipisci obcaecati voluptatum!
+                        Praesentium ab deleniti tenetur debitis explicabo?
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="reviewer">
+                        <div class="d-flex review-date">
+                            <div class="review-date-label">Опубликовано:</div>
+                            <div>10.04.2024</div>
+                        </div>
+                        <div class="reviewer-nickname">Nickname5:</div>
+                    </div>
+                    <div class="review">Lorem ipsum dolor sit amet.</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const dialog = document.getElementById('myDialog');
+        const button = document.querySelector('button');
+
+        function openDialog() {
+            dialog.showModal();
+        }
+
+        function closeDialog(event) {
+        // If the target dialog is
+        if (!event.target.contains(dialog)) return;
+        dialog.close();
+        }
+
+        button.addEventListener('click', openDialog);
+        document.addEventListener('click', closeDialog);
+    </script>
+</body>
+
+</html>

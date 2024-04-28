@@ -295,20 +295,6 @@ header {
     text-align: justify;
 }
 
-.lib-add-game-btn {
-    background-color: #235cc0;
-    border: none;
-    border-radius: 5px;
-    color: #C6D4DF;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 7px 13px;
-}
-
-.lib-add-game-btn:hover {
-    filter: brightness(125%);
-}
-
 .custom-width {
     width: 960px;
 }
