@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center text-align-center flex-direction-column">
-                    <a class="d-flex catalog-item" href="/client/user/games/gamePage/gamePage.html">
+                    <a class="d-flex catalog-item" href="../gamePage/gamePage.html">
                         <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
                             alt="">
                         <span class="game-name-span">Game 1</span>
@@ -138,10 +138,7 @@
     </main>
     <script src="../../navbar.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('#navbar .nav-link:nth-child(1) span').classList.add('active');
-            console.log(document.querySelector('#navbar .nav-link:nth-child(1) span'));
-        })
+        document.addEventListener('DOMContentLoaded', () => document.querySelector('#navbar .nav-link:nth-child(1) span').classList.add('active'));
     
         document.getElementById('actionGame').addEventListener('onclick', e => e.preventDefault());
         function openFilterList(listID) {

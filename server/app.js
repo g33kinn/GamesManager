@@ -11,7 +11,7 @@ const PORT = 3000;
 
 
 router.get('/', (req, res) => {
-    res.sendFile("D:\\Programming\\Web\\GamesManager\\GamesManager\\client\\catalog.html");
+    res.send("Ok!");
 })
 
 connectToDB();

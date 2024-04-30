@@ -7,15 +7,7 @@
     <link rel="stylesheet" href="../../../css/style.css">
 </head>
 <body>
-    <header>
-        <a class="nav-link" href="catalog.html"><span>Каталог</span></a>
-        <a class="nav-link" href="library.html"><span>Библиотека</span></a>
-        <a class="nav-link" href="profile.html"><span class="active">Профиль</span></a>
-        <div class="login-register-links">
-            <a class="login-register-link" href="login.html">Войти</a>
-            <a class="login-register-link" href="register.html">Регистрация</a>
-        </div>
-    </header>
+    <header id="navbar"></header>
     <main>
         <div class="d-flex justify-content-center">
             <div class="login-register-card">
@@ -36,6 +28,10 @@
               </div>
         </div>
     </main>
+    <script src="../../navbar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => document.querySelector('#navbar .nav-link:nth-child(3) span').classList.add('active'));
+    </script>
 </body>
 </html>
 

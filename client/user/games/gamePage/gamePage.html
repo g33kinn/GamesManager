@@ -9,15 +9,7 @@
 </head>
 
 <body>
-    <header>
-        <a class="nav-link" href="catalog.html"><span class="active">Каталог</span></a>
-        <a class="nav-link" href="library.html"><span>Библиотека</span></a>
-        <a class="nav-link" href="profile.html"><span>Профиль</span></a>
-        <div class="login-register-links">
-            <a class="login-register-link" href="login.html">Войти</a>
-            <a class="login-register-link" href="register.html">Регистрация</a>
-        </div>
-    </header>
+    <header id="navbar"></header>
     <main>
         <div class="d-flex align-items-center flex-direction-column">
             <div class="custom-width game-page-name">Game1</div>
@@ -158,7 +150,9 @@
             </div>
         </div>
     </main>
+    <script src="../../navbar.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => document.querySelector('#navbar .nav-link:nth-child(1) span').classList.add('active'));
         const dialog = document.getElementById('myDialog');
         const button = document.querySelector('button');
 

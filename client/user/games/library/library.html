@@ -5,20 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Библиотека игр</title>
-    <link rel="stylesheet" href="/client/css/style.css">
+    <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="library.css">
 </head>
 
 <body>
-    <header>
-        <a class="nav-link" href="/client/user/games/catalog/catalog.html"><span>Каталог</span></a>
-        <a class="nav-link" href="/client/user/games/library/library.html"><span class="active">Библиотека</span></a>
-        <a class="nav-link" href="/client/user/account/profile/profile.html"><span>Профиль</span></a>
-        <div class="login-register-links">
-            <a class="login-register-link" href="/client/user/account/login/login.html">Войти</a>
-            <a class="login-register-link" href="/client/user/account/register/register.html">Регистрация</a>
-        </div>
-    </header>
+    <header id="navbar"></header>
     <main>
         <div class="library-container">
             <div class="d-flex justify-content-space-between">
@@ -166,6 +158,10 @@
             </div>
         </div>
     </main>
+    <script src="../../navbar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => document.querySelector('#navbar .nav-link:nth-child(2) span').classList.add('active'));
+    </script>
 </body>
 
 </html>
