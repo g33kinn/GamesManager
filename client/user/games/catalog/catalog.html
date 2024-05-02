@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Каталог игр</title>
     <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="catalog.css">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center text-align-center flex-direction-column">
-                    <a class="d-flex catalog-item" href="../gamePage/gamePage.html">
+                    <a class="d-flex catalog-item" href="/catalog/gamePage">
                         <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
                             alt="">
                         <span class="game-name-span">Game 1</span>
@@ -137,23 +138,7 @@
         </div>
     </main>
     <script src="../../navbar.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => document.querySelector('#navbar .nav-link:nth-child(1) span').classList.add('active'));
-    
-        document.getElementById('actionGame').addEventListener('onclick', e => e.preventDefault());
-        function openFilterList(listID) {
-            let content = document.getElementById(listID);
-            if (!content.classList.contains('d-none'))
-                content.classList.add('d-none');
-            else
-                content.classList.remove('d-none');
-        }
-        function toggleCheckbox(checkboxID) {
-            let checkbox = document.getElementById(checkboxID);
-            checkbox.checked = !checkbox.checked;
-        }
-
-    </script>
+    <script src="catalog.js"></script>
 </body>
 
 </html>

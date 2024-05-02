@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const Role = new Schema({
-    RoleName: { type: String, required: true },
+    name: { type: String, unique: true, default: "PLAYER" },
 });
 
-module.exports = model('Game', Game);
+module.exports = model('Role', Role);

@@ -1,13 +1,87 @@
-.lib-add-game-btn {
-    background-color: #235cc0;
-    border: none;
-    border-radius: 5px;
-    color: #C6D4DF;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 7px 13px;
+.game-card {
+    background-color: #165f99;
+    width: 21%;
+    margin: 2% 2% 2% 2%;
+    float: left;
+    height: 300px;
+    border-radius: 10px;
 }
 
-.lib-add-game-btn:hover {
+.library-container {
+    width: 1500px;
+    margin: 75px 200px;
+}
+
+.library-card {
+    background-color: #223e59;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.game-card-name {
+    margin: 15px 0 15px 0;
+    font-size: 20px;
+}
+
+.game-card-img {
+    width: 180px;
+    height: 180px;
+    margin: 0px 68px 0px 68px;
+    border-radius: 10px;
+}
+
+.game-card-actions {
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.game-card-a {
+    color: #C6D4DF;
+    font-size: 14px;
+}
+
+.game-card-btn {
+    color: #C6D4DF;
+    border: none;
+    padding: 0;
+    outline: none;
+    background: none;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.input-search-lib {
+    height: 14px;
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #223a4c;
+    color: white;
+    margin: 0 10px 0 5px;
+}
+
+.input-search-lib:focus {
+    outline: none;
+}
+
+.btn-search-lib {
+    cursor: pointer;
+    color: #67C1F5;
+    background-color: #223a4c;
+    border: 0;
+    height: 26px;
+    width: 100px;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.btn-search-lib:hover {
     filter: brightness(125%);
+    color: white;
+}
+
+.search-games-lib {
+    margin-top: 22px;
 }

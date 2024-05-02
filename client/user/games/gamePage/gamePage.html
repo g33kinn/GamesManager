@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game1</title>
     <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../gamePage.css">
 </head>
 
 <body>
@@ -18,7 +19,7 @@
                     <div><img class="game-img"
                             src="https://pic.rutubelist.ru/video/da/75/da7500092db6d6df7cb85c180f72bf20.jpg" alt="">
                     </div>
-                    <div class="align-self-flex-end"><button class='lib-add-game-btn'>Добавить в библиотеку</button>
+                    <div class="align-self-flex-end"><button class='add-game-btn'>Добавить в библиотеку</button>
                     </div>
                 </div>
                 <div class="game-full-description">
@@ -75,8 +76,15 @@
                 <div class="d-flex justify-content-space-between align-items-center">
                     <div class="reviews-label">Отзывы пользователей</div>
                     <div><button class="leave-review-btn" onclick="openDialog()">Оставить отзыв</button></div>
-                    <dialog id="myDialog" class="review-dialog">Оставить свой отзыв</dialog>
-                      
+                    <dialog id="reviewDialog" class="review-dialog">
+                        <form id="reviewForm">  
+                            <h2>Оставить отзыв</h2>
+                            <label for="review">Отзыв:</label><br>
+                            <textarea id="review" name="review" rows="4" cols="77" class="review-textarea"></textarea><br><br>
+                            <button type="submit" class="leave-review-btn">Отправить</button>
+                            <button type="button" id="closeDialogBtn" class="leave-review-btn" onclick="reviewDialog.close();">Закрыть</button>
+                          </form>
+                    </dialog>
                 </div>
                 <div class="review-card">
                     <div class="reviewer">
@@ -151,24 +159,7 @@
         </div>
     </main>
     <script src="../../navbar.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => document.querySelector('#navbar .nav-link:nth-child(1) span').classList.add('active'));
-        const dialog = document.getElementById('myDialog');
-        const button = document.querySelector('button');
-
-        function openDialog() {
-            dialog.showModal();
-        }
-
-        function closeDialog(event) {
-        // If the target dialog is
-        if (!event.target.contains(dialog)) return;
-        dialog.close();
-        }
-
-        button.addEventListener('click', openDialog);
-        document.addEventListener('click', closeDialog);
-    </script>
+    <script src="../gamePage.js"></script>
 </body>
 
 </html>

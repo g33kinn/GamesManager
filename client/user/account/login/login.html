@@ -6,27 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
     <header id="navbar"></header>
     <div class="d-flex justify-content-center">
-        <div class="login-register-card">
+        <div class="user-data-card">
             <form action="" method="post" class="login-register-form">
                 <h1>Войти</h1><br>
                 <div>
                     <div><label for="login">Логин аккаунта</label></div>
-                    <div><input type="text" class="login-register-input" name="login" id="login"></div><br>
+                    <div><input type="text" class="user-data-input" name="login" id="login"></div><br>
                     <div><label for="pass">Пароль</label></div>
-                    <div><input type="password" class="login-register-input" name="pass" id="pass"></div><br>
-                    <div class="text-align-center"><button class="login-register-btn" type="submit">Войти</button></div>
+                    <div><input type="password" class="user-data-input" name="pass" id="pass"></div><br>
+                    <div class="text-align-center"><button class="user-data-btn" type="submit">Войти</button></div>
                 </div>
                 <p class="text-align-center">У вас нет аккаунта? - <a style="text-decoration: none"
-                        href="../register/register.html">Зарегистрируйтесь</a></p>
+                        href="/register">Зарегистрируйтесь</a></p>
             </form>
         </div>
     </div>
-    <script src="../../navbar.js"></script>
+    <script src="navbar.js"></script>
 </body>
 
 </html>

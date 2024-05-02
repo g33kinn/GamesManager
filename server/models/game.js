@@ -1,11 +1,11 @@
 const { Schema, model } = require('mongoose');
 
 const Game = new Schema({
-    Name: { type: String, required: true },
-    ReleaseDate: { type: Date, required: true },
-    Genre: [String],
-    Setting: { type: String, required: true },
-    Review: [{ UserName: String, Text: String }],
+    name: { type: String, required: true, unique: true},
+    releaseDate: { type: Date, required: true },
+    genres: [String],
+    setting: { type: String, required: true },
+    requirements: { type: String }
 });
 
 module.exports = model('Game', Game);

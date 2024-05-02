@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded', () => document.querySelector('#navbar .nav-link:nth-child(2) span').classList.add('active'));

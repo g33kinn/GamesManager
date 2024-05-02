@@ -15,9 +15,9 @@
         <div class="library-container">
             <div class="d-flex justify-content-space-between">
                 <h1>Библиотека</h1>
-                <div style="margin-top: 22px;">
-                    <input class="input-search" type="text">
-                    <button class="btn-search">
+                <div class="search-games-lib">
+                    <input class="input-search-lib" type="text">
+                    <button class="btn-search-lib">
                         <span>Поиск</span>
                     </button>
                 </div>
@@ -28,7 +28,7 @@
                     <img src="https://yt3.googleusercontent.com/ytc/AOPolaQ0khhzMHdI0OU76BTHSmzvbZ4_s0hen6H-38mS=s900-c-k-c0x00ffffff-no-rj"
                         alt="" class="game-card-img">
                     <div class="d-flex justify-content-center game-card-actions">
-                        <a href="/client/user/games/gamePage/gamePage.html" class="game-card-a">Перейти в каталог</a>
+                        <a href="/catalog/gamePage" class="game-card-a">Перейти в каталог</a>
                         <button class="game-card-btn">
                             Удалить из библиотеки
                         </button>
@@ -159,9 +159,7 @@
         </div>
     </main>
     <script src="../../navbar.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => document.querySelector('#navbar .nav-link:nth-child(2) span').classList.add('active'));
-    </script>
+    <script src="library.js"></script>
 </body>
 
 </html>
