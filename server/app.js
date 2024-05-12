@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const gamesRouter = require('./routes/gamesRoutes.js');
 const authRouter = require('./routes/authRoutes.js');
+const reviewRouter = require('./routes/reviewsRoutes.js');
+const libraryRouter = require('./routes/libraryRouter.js')
 
 const PORT = 3000;
 const { connectToDB } = require('./db.js');
@@ -21,6 +23,8 @@ app.use(express.static('D:/Programming/Web/GamesManager/GamesManager/client/user
 app.use(express.static('D:/Programming/Web/GamesManager/GamesManager/client/user'));
 app.use(gamesRouter);
 app.use(authRouter);
+app.use(reviewRouter);
+app.use(libraryRouter);
 
 app.get('/library', (req, res) => {
     res.sendFile('D:/Programming/Web/GamesManager/GamesManager/client/user/games/library/library.html');

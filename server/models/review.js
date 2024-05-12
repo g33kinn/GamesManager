@@ -1,18 +1,20 @@
 const { Schema, model } = require('mongoose');
 
 const Review = new Schema({
-    user: {
+    userID: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    game: {
+    gameID: {
         type: Schema.Types.ObjectId,
         ref: 'Game',
         required: true
     },
     text: { type: String, required: true },
-    publicationDate: Date = new Date()
+    publicationDate: { type: Date, required: true },
+    editDate: { type: Date },
+    isPositive: { type: Boolean, required: true },
 });
 
 module.exports = model('Review', Review);
