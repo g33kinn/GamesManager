@@ -3,7 +3,8 @@ const path = require('path');
 const gamesRouter = require('./routes/gamesRoutes.js');
 const authRouter = require('./routes/authRoutes.js');
 const reviewRouter = require('./routes/reviewsRoutes.js');
-const libraryRouter = require('./routes/libraryRouter.js')
+const libraryRouter = require('./routes/libraryRouter.js');
+const userRouter = require('./routes/userRoutes.js');
 
 const PORT = 3000;
 const { connectToDB } = require('./db.js');
@@ -25,14 +26,7 @@ app.use(gamesRouter);
 app.use(authRouter);
 app.use(reviewRouter);
 app.use(libraryRouter);
-
-app.get('/library', (req, res) => {
-    res.sendFile('D:/Programming/Web/GamesManager/GamesManager/client/user/games/library/library.html');
-});
-
-app.get('/profile', (req, res) => {
-    res.sendFile('D:/Programming/Web/GamesManager/GamesManager/client/user/account/profile/profile.html');
-});
+app.use(userRouter);
 
 app.use((req, res) => {
     res.send('Error: 404<br>Page not found');

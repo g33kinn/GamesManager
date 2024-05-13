@@ -35,7 +35,7 @@ const getGameByName = (req, res) => {
             console.log(err);
             handleError(res, 'Что-то пошло не так...');
         });
-}
+};
 
 const deleteGameByName = (req, res) => {
     Game
@@ -48,10 +48,10 @@ const deleteGameByName = (req, res) => {
             console.log(err);
             handleError(res, 'Что-то пошло не так...');
         });
-}
+};
 
-const addGame = (req, res) => {
-    const existingGame = Game.findOne({ gameName: req.body.gameName });
+const addGame = async (req, res) => {
+    const existingGame = await Game.findOne({ gameName: req.body.gameName });
     if (existingGame) return res.status(409).json({ message: 'Игра уже существует.' });
     
     const game = new Game(req.body);
@@ -64,7 +64,7 @@ const addGame = (req, res) => {
             console.log(err);
             handleError(res, 'Что-то пошло не так...');
         });
-}
+};
 
 const updateGame = (req, res) => {
     Game
@@ -77,6 +77,6 @@ const updateGame = (req, res) => {
             console.log(err);
             handleError(res, 'Что-то пошло не так...');
         });
-}
+};
 
 module.exports = { getGamesByFilter, getGameByName, deleteGameByName, addGame, updateGame };

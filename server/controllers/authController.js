@@ -66,23 +66,4 @@ const login = async (req, res) => {
     }
 }
 
-async function getUsers(req, res) {
-    try {
-        User
-            .find()
-            .sort({ userName: 1 })
-            .then((users) => {
-                if (users.length === 0)  res.status(200).json({ message: 'Список пользователей пуст.'})
-                else res.status(200).json(users);
-            })
-            .catch((err) => {
-                console.log(err);
-                handleError(res, 'Что-то пошло не так...');
-            });
-    }
-    catch (e)  {
-        console.log(e);
-    }
-}
-
-module.exports = { registration, login, getUsers };
+module.exports = { registration, login };
