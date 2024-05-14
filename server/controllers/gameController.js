@@ -4,7 +4,6 @@ const path = require('path');
 
 const getGamesByFilter = (req, res) => {
     const filters = req.query;
-
     const queryFilters = {};
     if (filters.genres) queryFilters.genres = { $all: Array.isArray(filters.genres) ? filters.genres : [filters.genres]};
     if (filters.themes) queryFilters.themes = { $all: Array.isArray(filters.themes) ? filters.themes : [filters.themes]}

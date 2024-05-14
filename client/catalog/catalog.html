@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Каталог игр</title>
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="catalog.css">
 </head>
 
@@ -22,57 +22,14 @@
                         </button>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center align-items-center text-align-center flex-direction-column">
-                    <a class="d-flex catalog-item" href="/catalog/gamePage">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 1</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 2</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 3</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 4</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 5</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 6</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 7</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 8</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 9</span>
-                    </a>
-                    <a class="d-flex catalog-item" href="#">
-                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                            alt="">
-                        <span class="game-name-span">Game 10</span>
-                    </a>
+                <div id="catalog" class="d-flex justify-content-center align-items-center text-align-center flex-direction-column">
+                    <template id="gameCardTemplate">
+                        <a class="d-flex catalog-item">
+                            <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
+                                alt="">
+                            <span class="game-name-span"></span>
+                        </a>
+                    </template>
                 </div>
             </div>
             <div class="catalog-filter">

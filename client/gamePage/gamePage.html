@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game1</title>
     <link rel="stylesheet" href="../../../css/style.css">
-    <link rel="stylesheet" href="../gamePage.css">
+    <link rel="stylesheet" href="gamePage.css">
 </head>
 
 <body>
     <header id="navbar"></header>
     <main>
-        <div class="d-flex align-items-center flex-direction-column">
-            <div class="custom-width game-page-name">Game1</div>
+        <div id="gamePage" class="d-flex align-items-center flex-direction-column">
+            <div class="custom-width game-page-name"></div>
             <div class="d-flex justify-content-center game-page">
                 <div class="d-flex align-items-center flex-direction-column justify-content-space-between game-img-btn">
                     <div><img class="game-img"
@@ -34,37 +34,37 @@
                     </div>
                     <div class="d-flex game-description-div">
                         <div class="game-description-property">Жанр:</div>
-                        <div>Авиасимулятор, танковый симулятор</div>
+                        <div id="genres"></div>
                     </div>
                     <div class="d-flex game-description-div">
-                        <div class="game-description-property">Сеттинг:</div>
-                        <div>Военный</div>
+                        <div class="game-description-property">Тематика:</div>
+                        <div id="themes"></div>
                     </div>
                     <div class="d-flex game-description-div">
                         <div class="game-description-property">Дата выхода:</div>
-                        <div>15 августа 2013 года</div>
+                        <div id="releaseDate">15 августа 2013 года</div>
                     </div>
                     <div>
                         <div class="game-description-label">Минимальные системные требования:</div>
                         <div class="d-flex game-requirements-div">
                             <div class="d-flex game-requirements">ОС:</div>
-                            <div>Windows 10 &#40;64 bit&#41;</div>
+                            <div id="OS"></div>
                         </div>
                         <div class="d-flex game-requirements-div">
                             <div class="d-flex game-requirements">Процессор:</div>
-                            <div>Dual-Core 2.2 GHz</div>
+                            <div id="CPU"></div>
                         </div>
                         <div class="d-flex game-requirements-div">
                             <div class="d-flex game-requirements">Оперативная память:</div>
-                            <div>4 GB ОЗУ</div>
+                            <div id="RAM"></div>
                         </div>
                         <div class="d-flex game-requirements-div">
                             <div class="d-flex game-requirements">Видеокарта:</div>
-                            <div>NVIDIA GeForce GTX 660</div>
+                            <div id="GPU"></div>
                         </div>
                         <div class="d-flex game-requirements-div">
                             <div class="d-flex game-requirements">Место на диске:</div>
-                            <div>17 GB</div>
+                            <div id="Storage"></div>
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
         </div>
     </main>
     <script src="../../navbar.js"></script>
-    <script src="../gamePage.js"></script>
+    <script src="gamePage.js"></script>
 </body>
 
 </html>

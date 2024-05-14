@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const gamesRouter = require('./routes/gamesRoutes.js');
 const authRouter = require('./routes/authRoutes.js');
 const reviewRouter = require('./routes/reviewsRoutes.js');
@@ -11,6 +12,7 @@ const { connectToDB } = require('./db.js');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
     console.log(`Path: ${req.path}`);
@@ -18,10 +20,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static(path.join(__dirname, '../client')));
-app.use(express.static('D:/Programming/Web/GamesManager/GamesManager/client/user/games/library'));
-app.use(express.static('D:/Programming/Web/GamesManager/GamesManager/client/user/account/profile'));
-app.use(express.static('D:/Programming/Web/GamesManager/GamesManager/client/user'));
+// app.use(express.static(path.join(__dirname, '../client')));
+// app.use(express.static('D:/Programming/Web/GamesManager/GamesManager/client/user/games/library'));
+// app.use(express.static('D:/Programming/Web/GamesManager/GamesManager/client/user/account/profile'));
+// app.use(express.static('D:/Programming/Web/GamesManager/GamesManager/client/user'));
 app.use(gamesRouter);
 app.use(authRouter);
 app.use(reviewRouter);

@@ -19,6 +19,7 @@ module.exports = function (roles) {
 
             if (!hasRole) return res.status(403).json({message: "У вас нет прав доступа"});
             req.userID = decodedData.id;
+            
             next();
         } catch(err) {
             console.log(err);
