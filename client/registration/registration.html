@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="register.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <header id="navbar"></header>
+    <div class="d-flex justify-content-center">
+        <div class="user-data-card">
+            <form id="registrationForm" method="post" class="login-register-form">
+                <h1>Регистрация</h1><br>
+                <div>
+                    <div><input type="text" class="user-data-input" placeholder="Логин" name="login"></div><br>
+                    <div><input type="email" class="user-data-input" placeholder="Электронная почта" name="email"></div><br>
+                    <div><input type="text" class="user-data-input" placeholder="Телефон" name="phoneNumber"></div><br>
+                    <div><input type="password" class="user-data-input" placeholder="Пароль" name="pass"></div><br>
+                    <div><input type="password" class="user-data-input" placeholder="Повторите пароль" name="repeatPass"></div><br>
+                    <div class="text-center"><button class="user-data-btn" type="submit">Зарегистрироваться</button></div>
+                </div>
+                <p class="text-center">У вас уже есть аккаунт? - <a style="text-decoration: none" href="/login">Авторизируйтесь</a></p>
+            </form>
+            <p class="text-center" id="message"></p>
+        </div>
+    </div>
+    <script src="../scripts/navbar.js"></script>
+    <script src="registration.js"></script>
+</body>
+
+</html>

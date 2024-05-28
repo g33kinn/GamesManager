@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="profile.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <header id="navbar"></header>
+    <main>
+        <div class="d-flex justify-content-center">
+            <div class="user-data-card">
+                <h1 class="text-center">Профиль</h1>
+                <div class="personal-info">
+                  <label for="login">Логин:</label>
+                  <div><input class="user-data-input" disabled type="login" id="login"/></div><br>
+                </div>
+                <div class="personal-info">
+                  <label for="mail">Почта:</label>
+                  <div><input class="user-data-input" type="email" id="email"/></div><br>
+                </div>
+                <div class="personal-info">
+                  <div><label for="phone">Телефон:</label></div>
+                  <div><input class="user-data-input" type="tel" id="phoneNumber"/></div><br>
+                </div>
+                <div class="personal-info">
+                    <label for="pass">Пароль:</label>
+                    <div><input class="user-data-input" type="password" id="pass"/></div><br>
+                </div>
+                <div class="personal-info">
+                  <label for="pass">Повторите пароль:</label>
+                  <div><input class="user-data-input" type="password" id="repeatPass"/></div><br>
+                </div>
+                <p id="behavIndex" class="personal-info"></p>
+                <div class="text-center"><button class="user-data-btn personal-info-change-btn" onclick="updateProfile()">Изменить</button></div>
+                <p id="message" class="text-center d-none"></p>
+              </div>
+        </div>
+    </main>
+    <script src="../scripts/navbar.js"></script>
+    <script src="profile.js"></script>
+    <script></script>
+</body>
+</html>

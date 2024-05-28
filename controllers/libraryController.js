@@ -3,10 +3,37 @@ const UserGame = require('../models/userGame');
 const Game = require('../models/game');
 
 const getUserLibraryWithFilters = async (req, res) => {
+    const filters = req.query;
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = 8;
+    const skip = (page - 1) * limit;
+
+    console.log(filters);
+
     const library = await UserGame.find({ userID: req.userID }).populate('gameID');
-    
-    if(library.length === 0) return res.status(200).json({ message: 'Библиотека пуста.'});
-    else return res.status(200).json(library.map(elem => elem.gameID));
+
+    if (library.length === 0) {
+        return res.status(200).json({ message: 'Библиотека пуста.' });
+    } 
+
+    const filteredLibrary = library
+        .filter(el => el.gameID && new RegExp(filters.gameName, 'i').test(el.gameID.gameName));
+
+    if (filteredLibrary.length === 0) {
+        return res.status(200).json({ message: 'Нет результатов.' });
+    }
+
+    const paginatedAndSortedLibrary = filteredLibrary
+        .sort((a, b) => a.gameID.gameName.localeCompare(b.gameID.gameName))
+        .slice(skip, skip + limit);
+
+    if (paginatedAndSortedLibrary.length === 0) {
+        return res.status(200).json({ message: 'Нет результатов.' });
+    }
+    else {
+        return res.status(200).json(paginatedAndSortedLibrary.map(el => el.gameID));
+    }
 };
 
 const deleteGameFromLibrary = async (req, res) => {
@@ -39,7 +66,7 @@ const addGameToLibrary = async (req, res) => {
     userGame
         .save()
         .then((_) => {
-            res.status(201).json({ message: 'Игра был успешна добавлена в библиотеку.' });
+            res.status(201).json({ message: 'Игра была успешно добавлена в библиотеку.' });
         })
         .catch((err) => {
             console.log(err);

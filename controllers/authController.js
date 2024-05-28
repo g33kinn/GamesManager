@@ -1,8 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const path = require('path');
 
-const { handleError } = require('./baseController');
+const { handleError, checkAuth } = require('./baseController');
 const { secret } = require('../config');
 
 const User = require('../models/user');
@@ -18,14 +17,20 @@ const generateAccessToken = (id, roles) => {
 
 const registration = async (req, res) => {
     try {
-        const { userName, password } = req.body;
+        const { userName, password, email, phoneNumber } = req.body;
 
-        const candidate =  await User.findOne({ userName: userName });
+        let candidate =  await User.findOne({ userName: userName });
         if (candidate) return res.status(409).json({message: 'Пользователь с таким логином уже существует. Повторите попытку.'});
+
+        candidate = await User.findOne({ email: email });
+        if (candidate) return res.status(409).json({message: 'Email занят. Повторите попытку.'});
+
+        candidate = await User.findOne({ phoneNumber: phoneNumber });
+        if (candidate) return res.status(409).json({message: 'Номером телефона занят. Повторите попытку.'});
 
         const hashPassword = bcrypt.hashSync(password, 7);
         const userRole = await Role.findOne({ name: 'PLAYER' });
-        const user = new User( { userName: userName, password: hashPassword, roles: [userRole.name]} );
+        const user = new User( { userName: userName, password: hashPassword, email: email, phoneNumber: phoneNumber, roles: [userRole.name]} );
 
         user
             .save()
@@ -62,7 +67,14 @@ const login = async (req, res) => {
             httpOnly: true,
             sameSite: "strict",
             secure: process.env.NODE_ENV !== "development",
-        }).json({ message: "Вы успешно вошли в аккаунт." });
+        })
+        .cookie("isAuth", true, {
+            maxAge: 15 * 24 * 60 * 60 * 1000,
+            httpOnly: false,
+            sameSite: "strict",
+            secure: process.env.NODE_ENV !== "development",
+        })
+        .json({ message: "Вы успешно вошли в аккаунт." });
     }
     catch (err) {
         console.log(err);
@@ -72,12 +84,12 @@ const login = async (req, res) => {
 
 const logout = (req, res) => {
 	try {
-		res.cookie("jwt", "", { maxAge: 0 });
-		res.status(200).json({ message: "Вы успешно вышли из аккаунта." });
+		res.cookie("jwt", "", { maxAge: 0 }).cookie("isAuth", false, { maxAge: 0 });
+		res.redirect('/login');
 	} catch (err) {
 		console.log(err);
 		res.status(500).json({ error: "Ошибка сервера" });
 	}
 };
 
-module.exports = { registration, login, logout };
+module.exports = { registration, login, logout, checkAuth};

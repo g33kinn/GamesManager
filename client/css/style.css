@@ -24,6 +24,10 @@ header {
     display: none;
 }
 
+.d-inline-block {
+    display: inline-block;
+}
+
 .justify-content-space-between {
     justify-content: space-between;
 }
@@ -34,6 +38,14 @@ header {
 
 .justify-content-space-between {
     justify-content: space-between;
+}
+
+.justify-content-around {
+    justify-content: space-around;
+}
+
+.right{
+    float: right;
 }
 
 .align-items-center {
@@ -48,11 +60,11 @@ header {
     flex-direction: column;
 }
 
-.text-align-center {
+.text-center {
     text-align: center;
 }
 
-.text-align-justify {
+.text-justify {
     text-align: justify;
 }
 
@@ -142,3 +154,6 @@ header {
     filter: brightness(125%);
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}

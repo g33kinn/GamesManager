@@ -5,29 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="login.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
     <header id="navbar"></header>
     <div class="d-flex justify-content-center">
         <div class="user-data-card">
-            <form action="" method="post" class="login-register-form">
+            <form id="loginForm" method="post" class="login-register-form">
                 <h1>Войти</h1><br>
                 <div>
                     <div><label for="login">Логин аккаунта</label></div>
                     <div><input type="text" class="user-data-input" name="login" id="login"></div><br>
                     <div><label for="pass">Пароль</label></div>
                     <div><input type="password" class="user-data-input" name="pass" id="pass"></div><br>
-                    <div class="text-align-center"><button class="user-data-btn" type="submit">Войти</button></div>
+                    <div class="text-center"><button class="user-data-btn" type="submit">Войти</button></div>
                 </div>
-                <p class="text-align-center">У вас нет аккаунта? - <a style="text-decoration: none"
-                        href="/register">Зарегистрируйтесь</a></p>
+                <p class="text-center">У вас нет аккаунта? - <a style="text-decoration: none" href="/registration">Зарегистрируйтесь</a></p>
             </form>
+            <p class="text-center" id="message"></p>
         </div>
     </div>
-    <script src="navbar.js"></script>
+    <script src="login.js"></script>
 </body>
 
 </html>

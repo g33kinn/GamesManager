@@ -7,6 +7,7 @@
     <title>Каталог игр</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="catalog.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -16,13 +17,13 @@
             <div class="catalog-column">
                 <div class="d-flex justify-content-center search-container">
                     <div class="d-flex justify-content-space-between align-items-center search-games">
-                        <input class="input-search" type="text">
-                        <button class="btn-search">
+                        <input id="searchInput" class="input-search" type="text">
+                        <button class="btn-search" onclick="getGames()">
                             <span>Поиск</span>
                         </button>
                     </div>
                 </div>
-                <div id="catalog" class="d-flex justify-content-center align-items-center text-align-center flex-direction-column">
+                <div id="catalog" class="d-flex justify-content-center align-items-center text-center flex-direction-column">
                     <template id="gameCardTemplate">
                         <a class="d-flex catalog-item">
                             <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
@@ -31,6 +32,7 @@
                         </a>
                     </template>
                 </div>
+                <p id="message" class="text-center"></p>
             </div>
             <div class="catalog-filter">
                 <div class='dropdown'>
@@ -94,7 +96,6 @@
             </div>
         </div>
     </main>
-    <script src="../../navbar.js"></script>
     <script src="catalog.js"></script>
 </body>
 

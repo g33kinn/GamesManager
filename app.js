@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path');
+const { pathJoin } = require('./utils/pathHelper.js');
 const cookieParser = require('cookie-parser');
 const gamesRouter = require('./routes/gamesRoutes.js');
 const authRouter = require('./routes/authRoutes.js');
@@ -18,8 +18,20 @@ app.use((req, res, next) => {
     console.log(`Method: ${req.method}`);
     next();
 });
+app.use((req, res, next) => {
+    if (!req.cookies.isAuth) {
+        res.cookie('isAuth', false, {
+            maxAge: 15 * 24 * 60 * 60 * 1000,
+            httpOnly: false,
+            sameSite: 'strict',
+            secure: process.env.NODE_ENV !== 'development',
+        });
+    }
+    next();
+})
 
-app.use(express.static(path.join(__dirname, '/public')));
+
+app.use(express.static(pathJoin('/client')));
 app.use(gamesRouter);
 app.use(authRouter);
 app.use(reviewRouter);

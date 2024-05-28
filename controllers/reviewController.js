@@ -7,12 +7,36 @@ const getReviewsByGameName = async (req, res) => {
     const game = await Game.findOne({ gameName: req.params.gameName });
     if (!game) return res.status(404).json({ message: `Игра ${req.params.gameName} не найдена.` });
 
+    const page = parseInt(req.query.page) || 1;
+    const limit = 5;
+    const skip = (page - 1) * limit;
+
     Review
         .find({ gameID: game._id })
+        .skip(skip)
+        .limit(limit)
         .sort({ publicationDate: 1 })
+        .populate('userID')
         .then((reviews) => {
             if (reviews.length === 0) res.status(200).json({ message: 'Отзывов пока нет.' })
             else res.status(200).json(reviews);
+        })
+        .catch((err) => {
+            console.log(err);
+            handleError(res, 'Что-то пошло не так...');
+        });
+};
+
+const getUserReviewByGameName = async (req, res) => {
+    const game = await Game.findOne({ gameName: req.params.gameName });
+    if (!game) return res.status(404).json({ message: `Игра ${req.params.gameName} не найдена.` });
+
+    Review
+        .find({ gameID: game._id, userID: req.userID })
+        .populate('userID')
+        .then((review) => {
+            if (review.length === 0) res.status(200).json({ message: 'Отзыва пока нет.' })
+            else res.status(200).json(review[0]);
         })
         .catch((err) => {
             console.log(err);
@@ -130,4 +154,4 @@ const updateReviewByUser = async (req, res) => {
 }
 
 
-module.exports = { getReviewsByGameName, deleteReviewByUser, deleteReviewByRManager, addReviewByUser, updateReviewByUser };
+module.exports = { getReviewsByGameName, deleteReviewByUser, deleteReviewByRManager, addReviewByUser, updateReviewByUser, getUserReviewByGameName };

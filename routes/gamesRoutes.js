@@ -1,15 +1,17 @@
 const express = require('express');
 const gamesRouter = express.Router();
 const { getGamesByFilter, getGameByName, deleteGameByName, addGame, updateGame } = require('../controllers/gameController.js');
+const { pathJoin } = require('../utils/pathHelper.js');
 const roleMiddleware = require('../middleware/roleMiddleware');
 
-//gamesRouter.use(express.static('../client/user/games/catalog'));
-//gamesRouter.use(express.static('../client/user/games/gamePage'));
 gamesRouter.get('/', (req, res) => res.redirect('/catalog'));
-gamesRouter.get('/catalog', getGamesByFilter);
-gamesRouter.get('/catalog/:gameName', getGameByName);
-gamesRouter.delete('/catalog/:gameName', roleMiddleware(['CMANAGER']), deleteGameByName);
-gamesRouter.post('/catalog', roleMiddleware(['ADMIN']), addGame);
-gamesRouter.patch('/catalog/:gameName', roleMiddleware(['CMANAGER']), updateGame);
+gamesRouter.get('/catalog', (req, res) => { res.sendFile(pathJoin('/client/catalog/catalog.html')); });
+gamesRouter.get('/catalog/:gameName', (req, res) => { res.sendFile(pathJoin('/client/gamePage/gamePage.html')); });
+
+gamesRouter.get('/games', getGamesByFilter);
+gamesRouter.get('/games/:gameName', getGameByName);
+gamesRouter.delete('/games/:gameName', roleMiddleware(['CMANAGER']), deleteGameByName);
+gamesRouter.post('/games', roleMiddleware(['ADMIN']), addGame);
+gamesRouter.patch('/games/:gameName', roleMiddleware(['CMANAGER']), updateGame);
 
 module.exports = gamesRouter;
