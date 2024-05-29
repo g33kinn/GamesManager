@@ -10,14 +10,17 @@ let isEmpty = true;
 $(document).ready(async function() {
     await import('../scripts/navbar.js');
     $('#navbar .nav-link:nth-child(1) span').addClass('active');
-
     game = await $.get(`/games/${gameName}`);
     await getGame(game);
-    if (isAuthenticated) gameInLib = await $.get(`/libraryGames?gameName=${gameName}`);
-    else $('.add-game-btn').addClass('d-none');
+    if (isAuthenticated) gameInLib = await $.get(`/libraryGames/${gameName}`);
     await getReviews(game);
 
-    if (gameInLib.length > 0) {
+    if (gameInLib.hasOwnProperty('message')) {
+        $('.add-game-btn').removeClass('d-none');
+        $('.add-game-btn').addClass('d-inline-block');
+    }
+    else {
+        $('.add-game-btn').removeClass('d-inline-block');
         $('.add-game-btn').addClass('d-none');
         $('#message').text('Игра уже есть в библиотеке');
     }
@@ -68,6 +71,7 @@ const getGame = async (game) => {
 
     $('.add-game-btn').on('click', function(e) {
         e.preventDefault();
+        $('.add-game-btn').removeClass('d-inline-block');
         $('.add-game-btn').addClass('d-none');
         if (userReview.hasOwnProperty('message')) {
             $('#openReviewDialogBtn').removeClass('d-none');
@@ -99,7 +103,6 @@ const getReviews = async (game, page = 1, append = false) => {
     $('#reviewsMessage').text("")
 
     if (isAuthenticated) userReview = await $.get(`/review/${game.gameName}`);
-
     if (gameInLib.hasOwnProperty('message')) {
         $('#openReviewDialogBtn').removeClass('d-inline-block');
         $('#openReviewDialogBtn').addClass('d-none');

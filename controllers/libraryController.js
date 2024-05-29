@@ -9,7 +9,6 @@ const getUserLibraryWithFilters = async (req, res) => {
     const limit = 8;
     const skip = (page - 1) * limit;
 
-    console.log(filters);
 
     const library = await UserGame.find({ userID: req.userID }).populate('gameID');
 
@@ -17,8 +16,7 @@ const getUserLibraryWithFilters = async (req, res) => {
         return res.status(200).json({ message: 'Библиотека пуста.' });
     } 
 
-    const filteredLibrary = library
-        .filter(el => el.gameID && new RegExp(filters.gameName, 'i').test(el.gameID.gameName));
+    const filteredLibrary = library.filter(el => el.gameID && new RegExp(filters.gameName, 'i').test(el.gameID.gameName));
 
     if (filteredLibrary.length === 0) {
         return res.status(200).json({ message: 'Нет результатов.' });
@@ -34,7 +32,14 @@ const getUserLibraryWithFilters = async (req, res) => {
     else {
         return res.status(200).json(paginatedAndSortedLibrary.map(el => el.gameID));
     }
-};
+}
+
+const getUserGameByName = async (req, res) => {
+    const library = await UserGame.find({ userID: req.userID }).populate({ path: 'gameID', match: { gameName: req.params.gameName } });
+    const response = library.filter(el => el.gameID).map(el => el.gameID);
+    if (response.length === 0) return res.status(200).json({ message: 'Нет результатов.' });
+    else return res.status(200).json(response);
+}
 
 const deleteGameFromLibrary = async (req, res) => {
     const game = await Game.findOne({ gameName: req.params.gameName });
@@ -74,4 +79,4 @@ const addGameToLibrary = async (req, res) => {
         });
 }
 
-module.exports = { getUserLibraryWithFilters, addGameToLibrary, deleteGameFromLibrary };
+module.exports = { getUserLibraryWithFilters, getUserGameByName, addGameToLibrary, deleteGameFromLibrary };
