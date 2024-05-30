@@ -5,10 +5,10 @@ module.exports = function (roles) {
         if(req.method === "OPTIONS") next();
         try {
             const token = req.cookies.jwt;
-            if (!token) return res.status(403).json({message: "Пользователь не авторизован"});
+            if (!token) return res.send("Пользователь не авторизован");
 
             const decodedData = jwt.verify(token, secret);
-            if (!decodedData) return res.status(401).json({ error: "Токен не валидный" });
+            if (!decodedData) return res.send("Токен не валидный");
             const {roles: userRoles} = decodedData;
 
             let hasRole = false;
@@ -18,13 +18,13 @@ module.exports = function (roles) {
                 }
             });
 
-            if (!hasRole) return res.status(403).json({message: "У вас нет прав доступа"});
+            if (!hasRole) return res.send("У вас нет прав доступа");
             req.userID = decodedData.id;
             
             next();
         } catch(err) {
             console.log(err);
-            return res.status(403).json({message: "Пользователь не авторизован"});
+            return res.cookie("jwt", "", { maxAge: 0 }).cookie("isAuth", false, { maxAge: 0 }).redirect('/');
         }
     }
 }

@@ -1,0 +1,45 @@
+.custom-width {
+    width: 960px;
+}
+
+.custom-hr{
+    border: 1px solid black;
+}
+
+.reviews-container {
+    margin-top: 40px;
+}
+
+.reviews-label {
+    text-transform: uppercase;
+}
+
+.review-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 20px 0 20px 0;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.review-date {
+    font-size: 10px;
+    color: #61686D;
+    text-transform: uppercase;
+    padding: 7px 0 0 10px;
+}
+
+.review-date-label {
+    padding-right: 5px;
+}
+
+.reviewer-nickname {
+    margin: 0 0 10px 10px;
+}
+
+.review {
+    margin-left: 10px;
+}
+
+.reviewer {
+    margin-bottom: 10px;
+}

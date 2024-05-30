@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджемент жанров и тематик игр</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="genresThemesManagement.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <header id="navbar"></header>
+    <main>
+        <div class="d-flex justify-content-center">
+            <div style="margin-right: 100px;">
+                <div class="d-flex justify-content-space-between align-items-center search-games-manager">
+                    <input id="searchGenreInput" class="input-search" type="text" placeholder="Поиск">
+                    <div>
+                        <button class="btn-search-add" onclick="getGenres()">
+                            <span>Поиск</span>
+                        </button>
+                        <button id="openGenreDialog" class="btn-search-add" onclick="openAddGenreDialog(event)">
+                            <span>Добавить</span>
+                        </button>
+                    </div>
+                </div>
+                <table class="genres-themes-table" id="genresTable">
+                    <thead class="genres-themes-head">
+                        <tr class="genres-themes-head-row">
+                            <th class="genres-themes-id-cell">#</th>
+                            <th class="genres-cell">Жанр</th>
+                            <th class="genres-action-cell">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody id="genresBody" class="genres-themes-body">
+                        <template id="genreCardTemplate">
+                            <tr class="genres-themes-body-row">
+                                <td id="id" class="genres-themes-id-cell"></td>
+                                <td id="genreName" class="genres-cell"></td>
+                                <td id="actions" class="genres-action-cell"></td>
+                            </tr>
+                        </template>
+                        <template id="noGenresCardTemplate">
+                            <tr id="GenresMessage" class="genres-themes-body-row">
+                                <td colspan="8" class="genres-themes-body-cell"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-left: 100px;">
+                <div class="d-flex justify-content-space-between align-items-center search-games-manager">
+                    <input id="searchThemeInput" class="input-search" type="text" placeholder="Поиск">
+                    <div>
+                        <button class="btn-search-add" onclick="getThemes()">
+                            <span>Поиск</span>
+                        </button>
+                        <button id="openThemeDialog" class="btn-search-add" onclick="openAddThemeDialog(event)">
+                            <span>Добавить</span>
+                        </button>
+                    </div>
+                </div>
+                <table class="genres-themes-table" id="themesTable">
+                    <thead class="genres-themes-head">
+                        <tr class="genres-themes-head-row">
+                            <th class="genres-themes-id-cell">#</th>
+                            <th class="themes-cell">Тематика</th>
+                            <th class="themes-action-cell">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody id="themesBody" class="genres-themes-body">
+                        <template id="themeCardTemplate">
+                            <tr class="genres-themes-body-row">
+                                <td id="id" class="genres-themes-id-cell"></td>
+                                <td id="themeName" class="themes-cell"></td>
+                                <td id="actions" class="themes-action-cell"></td>
+                            </tr>
+                        </template>
+                        <template id="noThemesCardTemplate">
+                            <tr id="ThemesMessage" class="genres-themes-body-row">
+                                <td colspan="2" class="genres-themes-body-cell"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="genresThemesManagement.js"></script>
+</body>
+
+</html>

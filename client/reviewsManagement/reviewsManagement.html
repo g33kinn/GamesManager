@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game1</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../gamePage/gamePage.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <header id="navbar"></header>
+    <main>
+        <div id="gamePage" class="d-flex align-items-center flex-direction-column">
+            <div class="custom-width reviews-container">
+                <div id="reviews">
+                    <template id="reviewCardTemplate">
+                        <div class="review-card">
+                            <div class="reviewer">
+                                <div class="d-flex justify-content-space-between">
+                                    <div class="d-flex review-img-div">
+                                        <img id="reviewImg" class="review-img">
+                                        <div id="reviewTitle" class="review-title text-center"></div>
+                                    </div>
+                                    <div id="update-delete-review" class="d-flex"></div>
+                                </div>
+                                <div class="d-flex review-date">
+                                    <div class="review-date-label">Опубликовано:</div>
+                                    <div id="reviewPublicationDate"></div>
+                                </div>
+                                <div class="d-flex review-date">
+                                    <div id="reviewEdit" class="review-date-label"></div>
+                                    <div id="reviewEditDate"></div>
+                                </div>
+                            </div>
+                            <div id="reviewGame" class="reviewer-nickname">123</div>
+                            <div id="reviewerNickname" class="reviewer-nickname"></div>
+                            <div id="reviewText" class="review"></div>
+                        </div>
+                    </template>
+                </div>
+                <p id="reviewsMessage" class="text-center"></p>
+            </div>
+        </div>
+    </main>
+    <script src="reviewsManagement.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+th, td {
+    border: 1px solid black;
+    height: 35px;
+    text-align: center;
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.genres-themes-table {
+    margin-top: 50px;
+    border-collapse: collapse;
+    background-color: #223a4c;
+    margin-bottom: 50px;
+}
+
+.themes-cell {
+    width: 450px;
+}
+
+.genres-themes-id-cell {
+    width: 40px;
+}
+
+.genres-cell {
+    width: 450px;
+}
+
+.genres-action-cell {
+    min-width: 10px;
+}
+
+.themes-action-cell {
+    min-width: 10px;
+}
+
+.search-games-manager {
+    margin: 65px 0 10px 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 40px;
+}
+
+.input-search {
+    height: 14px;
+    width: 320px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #223a4c;
+    color: white;
+    margin: 0 10px 0 5px;
+}
+
+.input-search:focus {
+    outline: none;
+}
+
+.btn-search-add {
+    cursor: pointer;
+    color: #67C1F5;
+    background-color: #223a4c;
+    border: 0;
+    height: 26px;
+    width: 100px;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.btn-search-add:hover {
+    filter: brightness(125%);
+    color: white;
+}
+
+.open-img {
+    margin: 0 5px 0 0;
+}
+
+.update-img {
+    margin: 0 5px 0 5px;
+}
+
+.delete-img {
+    margin: 0 0 0 5px;
+}

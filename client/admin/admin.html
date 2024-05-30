@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджемент жанров и тематик игр</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <header id="navbar"></header>
+    <main>
+        <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-space-between align-items-center search-admin">
+                <div>
+                    <button id="openUserDialog" class="btn-search-add" style="margin-left: 10px;" onclick="openAddManagerDialog(event)">
+                        <span>Добавить</span>
+                    </button>
+                    <dialog id="userDialog" class="users-dialog">
+                        <form id="userForm">  
+                            <h2 id="userDialogTitle"></h2>
+                            <label for="userName">Логин</label><br>
+                            <input id="userName" name="userName" class="users-dialog-input" maxlength="25"></input><br><br>
+                            <label for="pass">Пароль</label><br>
+                            <input id="pass" type="password" name="pass" class="users-dialog-input" maxlength="25"></input><br><br>
+                            <label for="email">Почта</label><br>
+                            <input id="email" type="email" name="pass" class="users-dialog-input" maxlength="25"></input><br><br>
+                            <label for="phoneNumber">Телефон</label><br>
+                            <input id="phoneNumber" name="pass" class="users-dialog-input" maxlength="25"></input><br><br>
+                            <label for="usersRolesSelect">Должность</label><br>
+                            <select id="usersRolesSelect" name="usersRolesSelect" class="users-dialog-select">
+                                <option value="CMANAGER">Менеджер каталога</option>
+                                <option value="RMANAGER">Менеджер отзывов</option>
+                            </select><br><br>
+                            <br><br>
+                            <button id="addUserDialogBtn" type="submit" class="users-dialog-btn"></button>
+                            <button type="button" id="closeUserDialogBtn" class="users-dialog-btn" onclick="{ clearDialog();dialog.close() }">Закрыть</button>
+                            <label id="userMessage"></label>
+                        </form>
+                    </dialog>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <table class="users-table">
+                <thead class="users-head">
+                    <tr class="users-head-row">
+                        <th class="users-head-cell">#</th>
+                        <th class="users-head-cell">Логин</th>
+                        <th class="users-head-game-name">Почта</th>
+                        <th class="users-head-cell">Телефон</th>
+                        <th class="users-head-cell">Должность</th>
+                        <th class="users-head-cell">Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTable" class="users-body">
+                    <template id="userCardTemplate">
+                        <tr class="users-body-row">
+                            <td id="id" class="users-body-cell"></td>
+                            <td id="userName" class="users-body-cell"></td>
+                            <td id="email" class="users-body-cell"></td>
+                            <td id="phoneNumber" class="users-body-cell"></td>
+                            <td id="roles" class="users-body-cell"></td>
+                            <td id="actions" class="users-body-cell"></td>
+                        </tr>
+                    </template>
+                    <template id="noUsersCardTemplate">
+                        <tr id="usersMessage" class="users-body-row">
+                            <td colspan="5" class="users-body-cell"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="admin.js"></script>
+</body>
+
+</html>

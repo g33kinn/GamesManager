@@ -3,7 +3,7 @@ let isLoading = false;
 let isEmpty = true;
 
 $(document).ready(async function() {
-    await import('../scripts/navbar.js');
+    await import('../scripts/navbarPlayer.js');
     $('#navbar .nav-link:nth-child(2) span').addClass('active');
     await getLibraryGames();
 });
@@ -35,6 +35,8 @@ const getLibraryGames = async (page = 1, append = false) => {
             const libGameCard = libGameCardTemplate.content.cloneNode(true);
             const catalogArticle = libGameCard.querySelector('.game-card-a');
             const deleteArticle = libGameCard.querySelector('.game-card-btn');
+
+            libGameCard.querySelector('#imageLib').src = `../assets/gameImg/${game.imageLib}`;
     
             libGameCard.querySelector('.d-flex.justify-content-center.game-card-name').textContent = game.gameName;
     
@@ -48,7 +50,6 @@ const getLibraryGames = async (page = 1, append = false) => {
             lib.appendChild(libGameCard);
         });
         currentPage = page;
-        console.log(currentPage);
         isEmpty = false;
     }
 }

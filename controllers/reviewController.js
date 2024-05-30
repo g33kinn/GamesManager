@@ -2,6 +2,7 @@ const { handleError } = require('./baseController');
 const Review = require('../models/review');
 const Game = require('../models/game');
 const UserGame = require('../models/userGame');
+const User = require('../models/user');
 
 const getReviewsByGameName = async (req, res) => {
     const game = await Game.findOne({ gameName: req.params.gameName });
@@ -64,7 +65,7 @@ const deleteReviewByRManager = async (req, res) => {
     const game = await Game.findOne({ gameName: req.params.gameName });
     if (!game) return res.status(404).json({ message: `Игра ${req.params.gameName} не найдена.` });
 
-    const review = await Review.findOne({ _id: req.params.reviewID }).populate('UserID');
+    const review = await Review.findOne({ _id: req.params.reviewID }).populate('userID');
     if (!review) return res.status(404).json({ message: `Отзыв с ID ${req.params.reviewID} не найден.` });
 
     const behIndex = review.userID.behaviourIndex - 1;
@@ -74,7 +75,7 @@ const deleteReviewByRManager = async (req, res) => {
         "accountStatus": behIndex === 1 ? 'Blocked' : 'Active'
     }
 
-    const message = '';
+    let message = '';
 
     User
         .findOneAndUpdate({ _id: review.userID._id }, newUserInfo)
@@ -153,5 +154,50 @@ const updateReviewByUser = async (req, res) => {
         });
 }
 
+const getReviews = async (req, res) => {
+    Review.aggregate([
+        {
+            $addFields: {
+                latestDate: { $max: ["$publicationDate", "$editDate"] }
+            }
+        },
+        {
+            $sort: { latestDate: -1 }
+        },
+        {
+            $lookup: {
+                from: 'games', // Имя коллекции, содержащей игры
+                localField: 'gameID',
+                foreignField: '_id',
+                as: 'game'
+            }
+        },
+        {
+            $lookup: {
+                from: 'users', // Имя коллекции, содержащей пользователей
+                localField: 'userID',
+                foreignField: '_id',
+                as: 'user'
+            }
+        },
+        {
+            $unwind: '$game' // Если связь 1:1, для массивов можно использовать $unwind
+        },
+        {
+            $unwind: '$user' // Если связь 1:1, для массивов можно использовать $unwind
+        }
+    ])
+    .then((reviews) => {
+        if (reviews.length === 0) 
+            res.status(200).json({ message: 'Список отзывов пуст.' });
+        else 
+            res.status(200).json(reviews);
+    })
+    .catch((err) => {
+        console.log(err);
+        handleError(res, 'Что-то пошло не так...');
+    });
+    
+}
 
-module.exports = { getReviewsByGameName, deleteReviewByUser, deleteReviewByRManager, addReviewByUser, updateReviewByUser, getUserReviewByGameName };
+module.exports = { getReviewsByGameName, deleteReviewByUser, deleteReviewByRManager, addReviewByUser, updateReviewByUser, getUserReviewByGameName, getReviews };

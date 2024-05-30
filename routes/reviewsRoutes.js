@@ -1,7 +1,11 @@
 const express = require('express');
 const reviewRouter = express.Router();
-const { getReviewsByGameName, deleteReviewByUser, deleteReviewByRManager, addReviewByUser, updateReviewByUser, getUserReviewByGameName } = require('../controllers/reviewController.js');
+const { getReviewsByGameName, deleteReviewByUser, deleteReviewByRManager, addReviewByUser, updateReviewByUser, getUserReviewByGameName, getReviews } = require('../controllers/reviewController.js');
 const roleMiddleware = require('../middleware/roleMiddleware.js');
+const { pathJoin } = require('../utils/pathHelper.js');
+
+reviewRouter.get('/reviewsManagement', roleMiddleware(['RMANAGER']), (req, res) => { res.sendFile(pathJoin('/client/reviewsManagement/reviewsManagement.html')); });
+reviewRouter.get('/reviews', roleMiddleware(['RMANAGER']), getReviews);
 
 reviewRouter.get('/review/:gameName', roleMiddleware(['PLAYER']), getUserReviewByGameName);
 reviewRouter.get('/reviews/:gameName', getReviewsByGameName);

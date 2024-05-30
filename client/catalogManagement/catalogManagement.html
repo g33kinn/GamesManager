@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджемент каталога игр</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="catalogManagement.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <header id="navbar"></header>
+    <main>
+        <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-space-between align-items-center search-games-manager">
+                <input id="searchInput" class="input-search" type="text" placeholder="Поиск">
+                <div>
+                    <button class="btn-search-add" onclick="getGames()">
+                        <span>Поиск</span>
+                    </button>
+                    <button id="openGameDialog" class="btn-search-add" onclick="openAddGameDialog(event)">
+                        <span>Добавить</span>
+                    </button>
+                    <dialog id="gameDialog" class="game-dialog">
+                        <form id="gameForm">  
+                            <h2 id="gameDialogTitle"></h2>
+                            <label for="gameName">Название игры</label><br>
+                            <input id="gameName" name="gameName" class="game-dialog-input" maxlength="25"></input><br><br>
+                            <label for="gameDescription">Описание</label><br>
+                            <textarea id="gameDescription" name="gameDescription" rows="2" cols="77" class="game-dialog-textarea" maxlength="400"></textarea><br><br>
+                            <label for="gameGenresSelect">Жанры</label><br>
+                            <select id="gameGenresSelect" name="gameGenresSelect" multiple class="game-dialog-select">
+                                <template id="genreCardTemplate">
+                                    <option>Жанр 1</option>
+                                </template>
+                            </select><br><br>
+                            <label for="gameThemesSelect">Тематики</label><br>
+                            <select id="gameThemesSelect" name="gameThemesSelect" multiple class="game-dialog-select">
+                                <template id="themeCardTemplate">
+                                    <option>Тематика 1</option>
+                                </template>
+                            </select><br><br>
+                            <label for="gameReleaseDate">Дата выхода</label><br>
+                            <input id="gameReleaseDate" name="gameReleaseDate" class="game-dialog-input" maxlength="10"></input><br><br>
+                            <label for="gameDeveloper">Разработчик</label><br>
+                            <input id="gameDeveloper" name="gameDeveloper" class="game-dialog-input" maxlength="25"></input><br><br>
+                            <div class="d-flex">
+                                <div>
+                                    <label for="imageCat">Каталог:</label><br>
+                                    <span class="d-none"><img id="imageCatFile" alt="" width="200px" height="75px"><br><br><br><br><br><br><br><br></span>
+                                    <input id="imageCatInput" type="file" name="imageCat" accept="image/*,.png,.jpg,.jpeg">
+                                </div>
+                                <div>
+                                    <label for="imageLib">Библиотека:</label><br>
+                                    <span class="d-none"><img id="imageLibFile" alt="" width="200px" height="200px"><br></span>
+                                    <input id="imageLibInput" type="file" name="imageLib" accept="image/*,.png,.jpg,.jpeg">
+                                </div>
+                                <div>
+                                    <label for="imagePage">Страница игры:</label><br>
+                                    <span class="d-none"><img id="imagePageFile" alt="" width="200px" height="112.5px"><br><br><br><br><br><br></span>
+                                    <input id="imagePageInput" type="file" name="imagePage" accept="image/*,.png,.jpg,.jpeg">
+                                </div>
+                            </div>
+                            <br><br>
+                            <button id="addGameDialogBtn" type="submit" class="game-dialog-btn d-none">Добавить</button>
+                            <button type="button" id="closeGameDialogBtn" class="game-dialog-btn" onclick="{ clearDialog();dialog.close() }">Закрыть</button>
+                            <label id="gameMessage"></label>
+                        </form>
+                    </dialog>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <table class="games-table">
+                <thead class="games-head">
+                    <tr class="games-head-row">
+                        <th class="games-head-cell">#</th>
+                        <th class="games-head-cell">Изображение</th>
+                        <th class="games-head-game-name">Название</th>
+                        <th class="games-head-cell">Жанр</th>
+                        <th class="games-head-cell">Тематика</th>
+                        <th class="games-cell-release-date">Дата выхода</th>
+                        <th class="games-cell-developer">Разработчик</th>
+                        <th class="games-action-cell">Действие</th>
+                    </tr>
+                </thead>
+                <tbody id="gamesTable" class="games-body">
+                    <template id="gameCardTemplate">
+                        <tr class="games-body-row">
+                            <td id="id" class="games-body-cell"></td>
+                            <td id="imageCat" class="games-body-cell"></td>
+                            <td id="gameName" class="games-body-cell"></td>
+                            <td id="genres" class="games-body-cell"></td>
+                            <td id="themes" class="games-body-cell"></td>
+                            <td id="releaseDate" class="games-body-cell"></td>
+                            <td id="developer" class="games-body-cell"></td>
+                            <td id="actions" class="games-action-cell"></td>
+                        </tr>
+                    </template>
+                    <template id="noGamesCardTemplate">
+                        <tr id="gamesMessage" class="games-body-row">
+                            <td colspan="8" class="games-body-cell"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="catalogManagement.js"></script>
+</body>
+
+</html>

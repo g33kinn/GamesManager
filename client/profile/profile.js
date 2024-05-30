@@ -1,7 +1,7 @@
 let profile;
 
 $(document).ready(async function() {
-    await import('../scripts/navbar.js');
+    await import('../scripts/navbarPlayer.js');
     $('#navbar .nav-link:nth-child(3) span').addClass('active');
     $(window).on('pageshow', function(event) {
         if (event.originalEvent.persisted || (performance && performance.navigation.type === 2)) {
@@ -34,10 +34,10 @@ const updateProfile = async () => {
 
     if (email && email !== profile.email) newUserInfo.email = email;
     if (phoneNumber && phoneNumber !== profile.phoneNumber) {
-        if (phoneNumber.length < 11 || phoneNumber.length > 12) {
+        if (phoneNumber.length < 11) {
             $('#message').removeClass('d-none');
             $('#message').addClass('d-block');
-            $('#message').text('Номер телефона должен содержать 11 или 12 цифр');
+            $('#message').text('Номер телефона должен содержать 11 цифр');
             return;
         }
         newUserInfo.phoneNumber = phoneNumber;
@@ -57,7 +57,6 @@ const updateProfile = async () => {
         }
         newUserInfo.password = password;
     } 
-
 
     const response = await $.ajax({
         url: '/user',

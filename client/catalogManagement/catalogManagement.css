@@ -1,0 +1,153 @@
+th, td {
+    border: 1px solid black;
+    height: 35px;
+    text-align: center;
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.games-table {
+    width: 75%;
+    border-collapse: collapse;
+    background-color: #223a4c;
+    margin-bottom: 50px;
+}
+
+.games-head-cell {
+    padding: 5px;
+}
+
+.games-action-cell {
+    min-width: 100px;
+}
+
+.search-games-manager {
+    margin: 65px 0 10px 0;
+    width: 75%;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 40px;
+}
+
+.input-search {
+    height: 14px;
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #223a4c;
+    color: white;
+    margin: 0 10px 0 5px;
+}
+
+.input-search:focus {
+    outline: none;
+}
+
+.btn-search-add {
+    cursor: pointer;
+    color: #67C1F5;
+    background-color: #223a4c;
+    border: 0;
+    height: 26px;
+    width: 100px;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.btn-search-add:hover {
+    filter: brightness(125%);
+    color: white;
+}
+
+.open-img {
+    margin: 0 5px 0 0;
+}
+
+.update-img {
+    margin: 0 5px 0 5px;
+}
+
+.delete-img {
+    margin: 0 0 0 5px;
+}
+
+.games-cell-developer {
+    max-width: 100px;
+}
+
+
+.game-dialog {
+    background-color: #3d4955;
+    color: white;
+    border: 0;
+    width: 800px;
+    height: 600px;
+    border-radius: 10px;
+}
+
+.game-dialog-btn {
+    background-color: #baddf1;
+    border: none;
+    border-radius: 5px;
+    color: #223a4c;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 7px 13px;
+    width: 150px;
+}
+
+.game-dialog-btn:hover {
+    background-color: #1a9fff;
+    color: white;
+}
+
+.game-dialog-input {
+    background-color: #222b35;
+    border: 1px solid #233c51;
+    border-radius: 5px;
+    margin-right: 6px;
+    color: white;
+    font-size: 16px;
+}
+
+.game-dialog-input:focus {
+    outline: none;
+}
+
+.game-dialog-textarea {
+    font-family: 'Motiva Sans', Sans-serif;
+    resize: both;
+    width: 585px;
+    height: 150px;
+    background-color: #222b35;
+    border: 1px solid #233c51;
+    border-radius: 5px;
+    margin-right: 6px;
+    resize: none;
+    color: white;
+    font-size: 16px;
+}
+
+.game-dialog-textarea:focus {
+    outline: none;
+}
+
+.game-dialog-select {
+    background-color: #222b35;
+    border: 1px solid #233c51;
+    border-radius: 5px;
+    color: white;
+    width: 200px;
+    font-size: 16px;
+    height: 20px; /* Минимальная высота для свернутого состояния */
+    overflow: hidden;
+    transition: height 0.3s ease; /* Плавный переход высоты */
+}
+
+.game-dialog-select:focus {
+    height: 60px; /* Высота для развернутого состояния */
+    overflow-y: auto;
+    outline: none;
+}

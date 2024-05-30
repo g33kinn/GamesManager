@@ -1,6 +1,5 @@
 $(document).ready(async function() {
-    await import('../scripts/navbar.js');
-    $('#navbar .nav-link:nth-child(3) span').addClass('active');
+    await import('../scripts/navbarPlayer.js');
     const $loginForm = $('#loginForm');
     $(window).on('pageshow', function(event) {
         if (event.originalEvent.persisted || (performance && performance.navigation.type === 2)) {
@@ -20,7 +19,7 @@ $(document).ready(async function() {
                 contentType: 'application/json',
                 data: JSON.stringify({ userName, password }),
             });
-            window.location.href = '/profile';
+            window.location.href = '/';
         } catch (error) {
             $('#message').text(error.responseJSON.message);
         }

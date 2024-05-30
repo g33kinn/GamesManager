@@ -17,7 +17,7 @@
             <div class="catalog-column">
                 <div class="d-flex justify-content-center search-container">
                     <div class="d-flex justify-content-space-between align-items-center search-games">
-                        <input id="searchInput" class="input-search" type="text">
+                        <input id="searchInput" class="input-search" type="text" placeholder="Поиск">
                         <button class="btn-search" onclick="getGames()">
                             <span>Поиск</span>
                         </button>
@@ -26,8 +26,7 @@
                 <div id="catalog" class="d-flex justify-content-center align-items-center text-center flex-direction-column">
                     <template id="gameCardTemplate">
                         <a class="d-flex catalog-item">
-                            <img src="https://cdn.akamai.steamstatic.com/steam/apps/236390/capsule_sm_120.jpg?t=1711903585"
-                                alt="">
+                            <img id="imageCat" width="120px" height="45px" alt="">
                             <span class="game-name-span"></span>
                         </a>
                     </template>
@@ -40,57 +39,30 @@
                         <div>Жанр</div>
                     </div>
                     <div id="gameGenres" class='dropdown-content d-block'>
-                        <div>
-                            <button onclick="toggleCheckbox('actionGame')" class="d-flex button-filter">
-                                <input id="actionGame" type="checkbox">
-                                <div>Экшен</div>
-                            </button>
-                        </div>
-                        <div>
-                            <button onclick="toggleCheckbox('adventure')" class="d-flex button-filter">
-                                <input id="adventure" type="checkbox">
-                                <div>Приключения</div>
-                            </button>
-                        </div>
-                        <div>
-                            <button onclick="toggleCheckbox('rpg')" class="d-flex button-filter">
-                                <input id="rpg" type="checkbox">
-                                <div>RPG-игры</div>
-                            </button>
-                        </div>
+                        <template id="genreCardTemplate">
+                            <div id="genre">
+                                <button class="d-flex button-filter">
+                                    <input type="checkbox">
+                                    <div id="genreName"></div>
+                                </button>
+                            </div>
+                        </template>
                     </div>
+                    <p id="genreMessage" class="text-center"></p>
                 </div>
                 <div class='dropdown'>
                     <div class='dropbtn' onclick="openFilterList('gameThemes')">
-                        <div>Сеттинг</div>
+                        <div>Тематика</div>
                     </div>
                     <div id="gameThemes" class='dropdown-content d-block'>
-                        <div>
-                            <button onclick="toggleCheckbox('fantasy')" class="d-flex button-filter">
-                                <input id="fantasy" type="checkbox">
-                                <div>Фэнтези</div>
-                            </button>
-                        </div>
-                        <div>
-                            <button onclick="toggleCheckbox('scienceFiction')" class="d-flex button-filter">
-                                <input id="scienceFiction" type="checkbox">
-                                <div>Научная фантастика</div>
-                            </button>
-                        </div>
-                        <div>
-                            <button onclick="toggleCheckbox('postApocalypse')" class="d-flex button-filter">
-                                <input id="postApocalypse" type="checkbox">
-                                <div>Постапокалипсис</div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class='dropdown'>
-                    <div class='dropbtn' onclick="openFilterList('releaseDate')">
-                        <div>Дата выхода</div>
-                    </div>
-                    <div id="releaseDate" class='dropdown-content d-block'>
-                        <div>123</div>
+                        <template id="themeCardTemplate">
+                            <div id="theme">
+                                <button class="d-flex button-filter">
+                                    <input type="checkbox">
+                                    <div id="themeName"></div>
+                                </button>
+                            </div>
+                        </template>
                     </div>
                 </div>
             </div>

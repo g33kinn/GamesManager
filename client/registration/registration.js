@@ -1,6 +1,5 @@
 $(document).ready(async function() {
-    await import('../scripts/navbar.js');
-    $('#navbar .nav-link:nth-child(3) span').addClass('active');
+    await import('../scripts/navbarPlayer.js');
     const $registrationForm = $('#registrationForm');
     $('[name="phoneNumber"]').on('input', function() {
         var inputValue = $(this).val().trim(); 

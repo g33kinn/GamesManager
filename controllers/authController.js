@@ -88,7 +88,7 @@ const logout = (req, res) => {
 		res.redirect('/login');
 	} catch (err) {
 		console.log(err);
-		res.status(500).json({ error: "Ошибка сервера" });
+		res.status(500).json({ message: "Ошибка сервера" });
 	}
 };
 

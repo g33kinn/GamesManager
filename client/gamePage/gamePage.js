@@ -8,10 +8,19 @@ let isLoading = false;
 let isEmpty = true;
 
 $(document).ready(async function() {
-    await import('../scripts/navbar.js');
+    await import('../scripts/navbarPlayer.js');
     $('#navbar .nav-link:nth-child(1) span').addClass('active');
-    game = await $.get(`/games/${gameName}`);
+
+    game = await $.ajax({
+        url: `/games/${gameName}`,
+        method: 'GET',
+        error: function(error) {
+            window.location.href = '/';
+        }
+    });
+
     await getGame(game);
+    
     if (isAuthenticated) gameInLib = await $.get(`/libraryGames/${gameName}`);
     await getReviews(game);
 
@@ -19,31 +28,29 @@ $(document).ready(async function() {
         $('.add-game-btn').removeClass('d-none');
         $('.add-game-btn').addClass('d-inline-block');
     }
-    else {
+    else if (isAuthenticated) {
         $('.add-game-btn').removeClass('d-inline-block');
         $('.add-game-btn').addClass('d-none');
         $('#message').text('Игра уже есть в библиотеке');
     }
 
-    if(!userReview.hasOwnProperty('message')) {
+    if(isAuthenticated && !userReview.hasOwnProperty('message')) {
         $('#reviewForm').off('submit');
         $('#reviewForm').on('submit', function(event) {
             event.preventDefault();
             updateReview(game);
         });
     }
-    else {
+    else if (isAuthenticated) {
         $('#reviewForm').off('submit');
         $('#reviewForm').on('submit', function(event) {
             event.preventDefault();
             addReview(game);
         });
     }
-   
 });
 
 const dialog = document.getElementById('reviewDialog');
-const button = document.getElementById('openReviewDialogBtn');
 
 function openDialog(event) {
     dialog.showModal();
@@ -59,15 +66,11 @@ document.addEventListener('click', closeDialog);
 const getGame = async (game) => {
     document.title = game.gameName;
     $('.game-page-name').text(game.gameName);
+    $('#imageLib').attr('src', `../assets/gameImg/${game.imagePage}`);
     $('#description').text(game.description);
     $('#genres').text(game.genres);
     $('#themes').text(game.themes);
     $('#releaseDate').text(game.releaseDate);
-    $('#OS').text(game.minRequirements.OS);
-    $('#CPU').text(game.minRequirements.CPU);
-    $('#RAM').text(game.minRequirements.RAM);
-    $('#GPU').text(game.minRequirements.GPU);
-    $('#Storage').text(game.minRequirements.Storage);
 
     $('.add-game-btn').on('click', function(e) {
         e.preventDefault();
@@ -103,6 +106,7 @@ const getReviews = async (game, page = 1, append = false) => {
     $('#reviewsMessage').text("")
 
     if (isAuthenticated) userReview = await $.get(`/review/${game.gameName}`);
+
     if (gameInLib.hasOwnProperty('message')) {
         $('#openReviewDialogBtn').removeClass('d-inline-block');
         $('#openReviewDialogBtn').addClass('d-none');
@@ -134,17 +138,15 @@ const getReviews = async (game, page = 1, append = false) => {
     const otherReviews = [];
     
     response.forEach(review => {
-        if (review._id !== userReview._id) {
-            otherReviews.push(review);
-        }
-            
+        if (review._id !== userReview._id) otherReviews.push(review);
     });
+
     let sortedReviews = [];
-    if (page === 1) 
+    if (page === 1 && isAuthenticated) 
         sortedReviews = userReview.hasOwnProperty('message') ? otherReviews : [userReview, ...otherReviews];
     else 
         sortedReviews = otherReviews;
-    
+
     sortedReviews.forEach(review => {
         const reviewCard = reviewCardTemplate.content.cloneNode(true);
 
@@ -174,7 +176,6 @@ const getReviews = async (game, page = 1, append = false) => {
         }
         reviews.appendChild(reviewCard);
     });
-
     currentPage = page;
     isEmpty = false;
 }

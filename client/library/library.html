@@ -17,7 +17,7 @@
             <div class="d-flex justify-content-space-between">
                 <h1>Библиотека игр</h1>
                 <div class="search-games-lib">
-                    <input id="searchInputLib" class="input-search-lib" type="text">
+                    <input id="searchInputLib" class="input-search-lib" type="text" placeholder="Поиск">
                     <button class="btn-search-lib" onclick="getLibraryGames()">
                         <span>Поиск</span>
                     </button>
@@ -28,8 +28,7 @@
                 <template id="libGameCardTemplate">
                     <div class="game-card">
                         <div class="d-flex justify-content-center game-card-name"></div>
-                        <img src="https://yt3.googleusercontent.com/ytc/AOPolaQ0khhzMHdI0OU76BTHSmzvbZ4_s0hen6H-38mS=s900-c-k-c0x00ffffff-no-rj"
-                            alt="" class="game-card-img">
+                        <img id="imageLib" width="180px" height="180px" alt="" class="game-card-img">
                         <div class="d-flex justify-content-center game-card-actions">
                             <a class="game-card-a">Перейти в каталог</a>
                             <button class="game-card-btn">
