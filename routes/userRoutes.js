@@ -1,7 +1,7 @@
 const express = require('express');
 const userRouter = express.Router();
 const { pathJoin } = require('../utils/pathHelper.js');
-const { getUser, updateUser, toggleUserAccountStatus, addManager, getManagers, deleteManager, updateManager } = require('../controllers/userController.js');
+const { getUser, updateUser, addManager, getManagers, deleteManager, updateManager } = require('../controllers/userController.js');
 const roleMiddleware = require('../middleware/roleMiddleware');
 
 
@@ -17,8 +17,5 @@ userRouter.patch('/managers/:userName', roleMiddleware(['ADMIN']), updateManager
 
 userRouter.get('/user', roleMiddleware(['PLAYER']), getUser);
 userRouter.patch('/user', roleMiddleware(['PLAYER']), updateUser);
-//userRouter.get('/users', roleMiddleware(['ADMIN']), getUsers);
-userRouter.patch('/users/:userName', roleMiddleware(['ADMIN']), toggleUserAccountStatus);
-userRouter.post('/users', roleMiddleware(['ADMIN']), addManager);
 
 module.exports = userRouter;

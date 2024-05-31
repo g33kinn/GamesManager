@@ -349,23 +349,16 @@ const getGames = async (page = 1, append = false) => {
                     const imageLib = imageLibInput.files[0];    
 
                     
-                    if (!imageCat) {
-                        $('#gameMessage').text('Картинка каталога не может быть пуста');
-                        return;
+                    if (imageCat) {
+                        await uploadImage(imageCat, game.gameName, 'Cat');
                     }
-                    if (!imagePage) {
-                        $('#gameMessage').text('Картинка страницы игры не может быть пуста');
-                        return;
+                    if (imagePage) {
+                        await uploadImage(imagePage, game.gameName, 'Page');
                     }
-                    if (!imageLib) {
-                        $('#gameMessage').text('Картинка библиотеки не может быть пуста');
-                        return;
+                    if (imageLib) {
+                        await uploadImage(imageLib, game.gameName, 'Lib');
                     }
-
-                    await uploadImage(imageCat, game.gameName, 'Cat');
-                    await uploadImage(imagePage, game.gameName, 'Page');
-                    await uploadImage(imageLib, game.gameName, 'Lib');
-
+                    
                     updateGame(newGameInfo, game);
                 });
             });

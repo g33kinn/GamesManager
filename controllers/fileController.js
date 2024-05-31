@@ -1,8 +1,5 @@
 const Game = require('../models/game');
 const { pathJoin } = require('../utils/pathHelper');
-const fs = require('fs');
-
-
 
 const uploadFile = async (req, res) => {
     if (!req.files || Object.keys(req.files).length === 0) 
@@ -21,11 +18,8 @@ const uploadFile = async (req, res) => {
 
     uploadedFile.name = `${req.body.gameName.replace(' ', '_')}${req.body.type}.png`
 
-    const uploadedFileName = `${req.body.gameName.replace(' ', '_')}${req.body.type}.png`;
 
     const uploadPath = pathJoin(`/client/assets/gameImg/${uploadedFile.name}`);
-
-    //await fs.promises.writeFile(uploadPath, uploadedFile); 
 
     await uploadedFile.mv(uploadPath, async (err) => {
         if (err) {
@@ -44,7 +38,6 @@ const uploadFile = async (req, res) => {
         Game
             .findOneAndUpdate({ gameName: req.body.gameName }, newGameInfo)
             .then((result) => {
-                console.log(result);
                 if (!result) res.status(404).json({ message: 'Игра не найдена.' });
                 else res.status(200).json({ message: 'Файл был добавлен.'});
             })

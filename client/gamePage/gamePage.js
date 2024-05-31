@@ -71,6 +71,7 @@ const getGame = async (game) => {
     $('#genres').text(game.genres);
     $('#themes').text(game.themes);
     $('#releaseDate').text(game.releaseDate);
+    $('#developer').text(game.developer);
 
     $('.add-game-btn').on('click', function(e) {
         e.preventDefault();

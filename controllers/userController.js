@@ -158,4 +158,4 @@ const updateManager = async (req, res) => {
         });
 }
 
-module.exports = { getUser, updateUser, toggleUserAccountStatus, addManager, getManagers, deleteManager, updateManager };
+module.exports = { getUser, updateUser, addManager, getManagers, deleteManager, updateManager };

@@ -1,6 +1,7 @@
 const { handleError } = require('./baseController');
 
 const Genre = require('../models/genre');
+const Game = require('../models/game');
 
 const getGenres = (req, res) => {
     Genre
@@ -16,14 +17,16 @@ const getGenres = (req, res) => {
         });
 };
 
-const addGenres = async (req, res) => {
+const addGenre = async (req, res) => {
     const existingGenre = await Genre.findOne({ name: req.body.name });
+    console.log(existingGenre);
     if (existingGenre) return res.status(409).json({ message: 'Жанр уже существует.' });
 
     const genre = new Genre(req.body);
     genre
         .save()
-        .then((_) => {
+        .then((result) => {
+            console.log(result);
             res.status(201).json({ message: 'Жанр был успешно добавлен.'});
         })
         .catch((err) => {
@@ -36,12 +39,13 @@ const updateGenre = async (req, res) => {
     const existingGenre = await Genre.findOne({ name: req.body.name });
     if (existingGenre) return res.status(409).json({ message: 'Жанр уже существует.' });
 
-    
-
+    await Game.updateMany(
+        { genres: req.params.genreName },
+        { $set: { 'genres.$': req.body.name } }
+    );
     Genre
-        .findOneAndUpdate({ name: req.params.name }, req.body)
+        .findOneAndUpdate({ name: req.params.genreName }, req.body)
         .then((result) => {
-            console.log(result);
             if (!result) res.status(404).json({ message: 'Жанр не найден.' });
             else res.status(200).json({ message: 'Жанр был успешно изменен.'});
         })
@@ -52,22 +56,19 @@ const updateGenre = async (req, res) => {
 };
 
 const deleteGenre = async (req, res) => {
-    const genre = await Genre.findOne({ gameName: req.params.name });
+    const genre = await Genre.findOne({ name: req.params.genreName });
     if (!genre) return res.status(404).json({ message: 'Жанр не найден.' });
 
-    const reviewResult = await Review.deleteMany({ gameID: game._id })
-    if (!reviewResult) deleteGameMessage += 'Отзывы не найдены.';
-    else deleteGameMessage += 'Отзывы были успешно удалены.';
+    await Game.updateMany(
+        { genres: req.params.genreName },
+        { $pull: { genres: req.params.genreName } }
+    );
 
-    const userGameResult = await UserGame.deleteMany({ gameID: game._id })
-    if (!userGameResult) deleteGameMessage += 'Игры из библиотек не найдены.';
-    else deleteGameMessage += 'Игры из библиотек были успешно удалены.';
-
-    Game
-        .findOneAndDelete({ gameName: req.params.gameName  })
+    Genre
+        .deleteOne({ name: req.params.genreName  })
         .then((result) => {
-            if (!result) res.status(404).json({ message: deleteGameMessage + 'Игра не найдена.' });
-            else res.status(200).json({ message: deleteGameMessage + 'Игра была успешно удалена.' });
+            if (!result) res.status(404).json({ message: 'Жанр не найден' });
+            else res.status(200).json({ message: 'Жанр удален' });
         })
         .catch((err) => {
             console.log(err);
@@ -75,4 +76,4 @@ const deleteGenre = async (req, res) => {
         });
 };
 
-module.exports = { getGenres, addGenres, updateGenre, deleteGenre };
+module.exports = { getGenres, addGenre, updateGenre, deleteGenre };

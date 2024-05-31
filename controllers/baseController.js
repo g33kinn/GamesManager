@@ -39,7 +39,7 @@ const redirectUser = async (req, res, next) => {
         if(role === dbRoles[2].name) // CMANAGER
             res.redirect('/catalogManagement');
         if(role === dbRoles[3].name) // RMANAGER
-            res.redirect('/reviewManagement');
+            res.redirect('/reviewsManagement');
     });
 }
 

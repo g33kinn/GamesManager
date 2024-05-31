@@ -15,14 +15,17 @@
     <main>
         <div class="d-flex justify-content-center">
             <div style="margin-right: 100px;">
+                
                 <div class="d-flex justify-content-space-between align-items-center search-games-manager">
-                    <input id="searchGenreInput" class="input-search" type="text" placeholder="Поиск">
                     <div>
-                        <button class="btn-search-add" onclick="getGenres()">
-                            <span>Поиск</span>
+                        <input type="text" class="input-search" id="genreNameInput" placeholder="Название жанра">
+                    </div>
+                    <div>
+                        <button id="addOrEditGenreBtn" class="btn-search-add" style="margin-left: 10px">
+                            <span>Сохранить</span>
                         </button>
-                        <button id="openGenreDialog" class="btn-search-add" onclick="openAddGenreDialog(event)">
-                            <span>Добавить</span>
+                        <button id="resetGenreBtn" class="btn-search-add" onclick="resetGenre()" style="margin-left: 10px">
+                            <span>Сброс</span>
                         </button>
                     </div>
                 </div>
@@ -52,13 +55,15 @@
             </div>
             <div style="margin-left: 100px;">
                 <div class="d-flex justify-content-space-between align-items-center search-games-manager">
-                    <input id="searchThemeInput" class="input-search" type="text" placeholder="Поиск">
                     <div>
-                        <button class="btn-search-add" onclick="getThemes()">
-                            <span>Поиск</span>
+                        <input type="text" class="input-search" id="themeNameInput" placeholder="Название тематики">
+                    </div>
+                    <div>
+                        <button id="addOrEditThemeBtn" class="btn-search-add" style="margin-left: 10px">
+                            <span>Сохранить</span>
                         </button>
-                        <button id="openThemeDialog" class="btn-search-add" onclick="openAddThemeDialog(event)">
-                            <span>Добавить</span>
+                        <button id="resetThemeBtn" class="btn-search-add" onclick="resetTheme()" style="margin-left: 10px">
+                            <span>Сброс</span>
                         </button>
                     </div>
                 </div>

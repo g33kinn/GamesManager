@@ -6,7 +6,34 @@ $(document).ready(async function() {
     $('#navbar .nav-link:nth-child(2) span').addClass('active');
     await getGenres();
     await getThemes();
+    $('#addOrEditGenreBtn').on('click', function(event) {
+        event.preventDefault();
+        addOrEditGenre();
+    });
+    $('#addOrEditThemeBtn').on('click', function(event) {
+        event.preventDefault();
+        addOrEditTheme();
+    });
 });
+
+const resetGenre = () => {
+    $('#genreNameInput').val('');
+    $('#addOrEditGenreBtn').off('click');
+    $('#addOrEditGenreBtn').on('click', function(event) {
+        event.preventDefault();
+        addOrEditGenre();
+    });
+    console.log($('#addOrEditGenreBtn').data('events'));
+}
+
+const resetTheme= () => {
+    $('#themeNameInput').val('');
+    $('#addOrEditThemeBtn').off('click');
+    $('#addOrEditThemeBtn').on('click', function(event) {
+        event.preventDefault();
+        addOrEditTheme();
+    });
+}
 
 const getGenres = async () => {
     const response = await $.get(`/genres`);
@@ -38,8 +65,14 @@ const getGenres = async () => {
                 <img id="updateGenreBtn" src="../assets/img/update.png" class="update-img cursor-pointer" width="20px" height="20px" alt="">
                 <img id="deleteGenreBtn" src="../assets/img/delete.png" class="delete-img cursor-pointer" width="20px" height="20px" alt="">
             `;
-            genreCard.querySelector('#updateGenreBtn').addEventListener('click', function() {
-                updateGenre(genre);
+            genreCard.querySelector('#updateGenreBtn').addEventListener('click', function(event) {
+                event.preventDefault();
+                $('#genreNameInput').val(genre.name);
+                $('#addOrEditGenreBtn').off('click');
+                $('#addOrEditGenreBtn').on('click', (event) => {
+                    event.preventDefault();
+                    addOrEditGenre(genre);
+                })
             });
             genreCard.querySelector('#deleteGenreBtn').addEventListener('click', function() {
                 deleteGenre(genre);
@@ -79,8 +112,15 @@ const getThemes = async () => {
                 <img id="updateThemeBtn" src="../assets/img/update.png" class="update-img cursor-pointer" width="20px" height="20px" alt="">
                 <img id="deleteThemeBtn" src="../assets/img/delete.png" class="delete-img cursor-pointer" width="20px" height="20px" alt="">
             `;
-            themeCard.querySelector('#updateThemeBtn').addEventListener('click', function() {
-                updateTheme(theme);
+            themeCard.querySelector('#updateThemeBtn').addEventListener('click', function(event) {
+                event.preventDefault();
+                $('#themeNameInput').val(theme.name);
+                $('#addOrEditThemeBtn').off('click');
+                $('#addOrEditThemeBtn').on('click', (event) => {
+                    event.preventDefault();
+                    addOrEditTheme(theme);
+                })
+                
             });
             themeCard.querySelector('#deleteThemeBtn').addEventListener('click', function() {
                 deleteTheme(theme);
@@ -88,4 +128,110 @@ const getThemes = async () => {
             themesBody.appendChild(themeCard);
         });
     }
+}
+
+const addOrEditGenre = async (genre = null) => {
+    if (!!genre) {
+        const genreName = $('#genreNameInput').val();
+        if (genre.name === genreName)
+            return;
+        if (genreName) {
+            await $.ajax({
+                url: `/genres/${genre.name}`,
+                method: 'PATCH',
+                data: JSON.stringify({ name: genreName }),
+                contentType: 'application/json',
+                error: function(error) {
+                    console.log(error);
+                    return;
+                }
+            });
+        }
+        else {
+            console.log('Genre name is empty');
+        }
+    }
+    else {
+        const genreName = $('#genreNameInput').val();
+        if (genreName) {
+            await $.ajax({
+                url: '/genres',
+                method: 'POST',
+                data: JSON.stringify({ name: genreName }),
+                contentType: 'application/json',
+                error: function(error) {
+                    console.log(error);
+                    return;
+                }
+            });
+            await getGenres();
+        }
+        else {
+            console.log('Genre name is empty');
+        }
+    }
+    $('#genreNameInput').val('');
+    await getGenres();
+}
+
+const addOrEditTheme = async (theme = null) => {
+    if (!!theme) {
+        const themeName = $('#themeNameInput').val();
+        if (themeName) {
+            await $.ajax({
+                url: `/themes/${theme.name}`,
+                method: 'PATCH',
+                data: JSON.stringify({ name: themeName }),
+                contentType: 'application/json',
+                error: function(error) {
+                    console.log(error);
+                    return;
+                } 
+            });
+        }
+    }    
+    else {
+        const themeName = $('#themeNameInput').val();
+        if (themeName) {
+            await $.ajax({
+                url: '/themes',
+                method: 'POST',
+                data: JSON.stringify({ name: themeName }),
+                contentType: 'application/json',
+                error: function(error) {
+                    console.log(error);
+                    return;
+                }
+            });
+        }
+        else {
+            console.log('Theme name is empty');
+        }
+    }
+    $('#themeNameInput').val('');
+    await getThemes();
+}
+
+const deleteGenre = async (genre) => {
+    await $.ajax({
+        url: `/genres/${genre.name}`,
+        method: 'DELETE',
+        error: function(error) {
+            console.log(error);
+            return;
+        }
+    });
+    await getGenres();
+}
+
+const deleteTheme = async (theme) => {
+    await $.ajax({
+        url: `/themes/${theme.name}`,
+        method: 'DELETE',
+        error: function(error) {
+            console.log(error);
+            return;
+        }
+    });
+    await getThemes();
 }
